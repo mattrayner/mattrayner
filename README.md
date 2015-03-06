@@ -1,4 +1,4 @@
-mattrayner-site
+MattRayner.co.uk
 ===============
 
-V2 version of my protfolio website
+Rails version of my website with CMS included.
