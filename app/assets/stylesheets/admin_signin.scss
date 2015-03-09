@@ -57,3 +57,28 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+#error_explanation {
+  background-color: $alert-danger-bg;
+  border: 1px solid $alert-danger-border;
+  border-radius: $alert-border-radius;
+  padding: 10px 5px 0 5px;
+  margin-bottom: 10px;
+
+  h2 {
+    font-size: $font-size-large;
+    margin: 0;
+  }
+
+  ul {
+    margin-top: 3px;
+  }
+}
+
+.margin-top {
+  margin-top: $padding-base-vertical !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
