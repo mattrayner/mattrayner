@@ -34,12 +34,18 @@ gem 'devise'
 # Use the HAML DSL for web pages
 gem 'haml'
 
+# Use Gravatar for avatars
+gem 'gravtastic'
+
 # Use Capistrano for deployment
 group :development do
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development, :test do

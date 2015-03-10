@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   namespace :admin do
-    get '/' => 'dashboard#index'
+    get '/' => 'dashboard#index', as: 'dashboard_index'
 
     resources :projects
   end
