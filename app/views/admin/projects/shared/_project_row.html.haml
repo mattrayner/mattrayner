@@ -1,0 +1,6 @@
+%tr
+  %td
+    = link_to project.title, admin_project_path(project)
+  %td
+    = link_to 'Edit', edit_admin_project_path(project)
+    = link_to 'Delete', admin_project_path(project), method: :delete

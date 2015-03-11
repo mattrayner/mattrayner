@@ -1,3 +1,26 @@
 -content_for :title, 'Projects : Dashboard : Matt Rayner'
 
-%h1 Projects
+.jumbotron
+  %h1
+    Projects
+    %small= @projects.count
+  %p.lead
+    Create a project to highlight some portfolio work. Use rich MarkDown to make a project interesting.
+  %p
+    = link_to 'Create Project', new_admin_project_path, class: 'btn btn-lg btn-success', role: 'button'
+
+%table.table
+  %thead
+    %tr
+      %th Title
+      %th Controls
+  %tbody
+    - if @projects.count.zero?
+      %tr
+        %td{ colspan: 2 }
+          Please
+          = link_to 'add a project', new_admin_project_path
+          to see it here.
+    - else
+      - @projects.each do |project|
+        = render 'admin/projects/shared/project_row', project: project

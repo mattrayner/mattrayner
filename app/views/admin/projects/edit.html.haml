@@ -1,0 +1,53 @@
+-content_for :title, "Edit #{truncate(@project.title, length: 20)} : Projects : Dashboard : Matt Rayner"
+
+.jumbotron
+  %h1
+    Edit
+    - if @project.title.present?
+      = "'#{truncate(@project.title, length: 10)}'"
+    - else
+      Project
+  %p.lead
+    Create a project to highlight some portfolio work. Use rich MarkDown to make a project interesting.
+- if @project.invalid?
+  %h3 Validation Errors:
+  .alert.alert-danger
+    - @project.errors.messages.each do |message|
+      %h4= message[0].capitalize
+      %ul
+        - message[1].each do |error|
+          %li= error
+
+= form_for @project, url: { controller: 'admin/projects', action: :update, id: @project.id } do |f|
+  .row
+    .col-md-8
+      .form-group
+        = f.label :title
+        = f.text_field :title, autofocus: true, placeholder: 'Give Cat', class: 'form-control'
+
+      .form-group
+        = f.label :intro
+        = f.text_area :intro, placeholder: 'Lorem Ipsum Dolor Sit Amit... (max-length 300)', class: 'form-control', maxsize: 300
+
+  .row
+    .col-md-8
+      .form-group
+        = f.label :body
+        = f.text_area :body, placeholder: 'Lorem Ipsum Dolor Sit Amit...', class: 'form-control', rows: 14
+    .col-md-4
+      .well
+        %h2 Note:
+        %p.lead
+          Consider your content.
+        %p
+          The main body for a project needs to be interesting and rich.
+        %p
+          Break up any large chunks of text. Use bold and italic sparingly and link often.
+        %p
+          Think about SEO. This section will be picked out by search engines. It's important to get this right. Your product is you, and what you can do.
+
+  .row
+    .col-sm-6.text-left
+      = link_to 'Back', admin_projects_path, class: 'btn btn-lg btn-default'
+    .col-sm-6.text-right
+      = f.submit 'Save', class: 'btn btn-lg btn-success'
