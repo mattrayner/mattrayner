@@ -26,5 +26,17 @@ describe 'admin/projects/edit' do
     it 'renders the project form' do
       expect(rendered).to match /Save/
     end
+
+    it 'renders the delete button' do
+      expect(rendered).to match /glyphicon-trash/
+    end
+
+    context 'with a long title' do
+      let(:title)   { 'Give Cat - The Bookmarklet you never knew you needed!' }
+
+      it 'concatenates after X number of characters' do
+        expect(rendered).to match /Edit\n'Give Ca...'/
+      end
+    end
   end
 end

@@ -50,4 +50,5 @@
     .col-sm-6.text-left
       = link_to 'Back', admin_projects_path, class: 'btn btn-lg btn-default'
     .col-sm-6.text-right
+      = link_to '<span class="glyphicon glyphicon-trash"></span><span class="sr-only"> Delete</span>'.html_safe, admin_project_path(@project), method: :delete, class: 'btn btn-lg btn-default btn-danger', data: { confirm: 'Are you sure you want to delete this project? This is PERMANENT!' }
       = f.submit 'Save', class: 'btn btn-lg btn-success'
