@@ -33,7 +33,11 @@ class Admin::ProjectsController < Admin::BaseController
 
     @project.update(user_params)
 
-    redirect_to admin_project_path(@project)
+    if @project.valid?
+      redirect_to admin_project_path(@project), notice: 'Project successfully updated!'
+    else
+      render 'admin/projects/edit'
+    end
   end
 
   def destroy

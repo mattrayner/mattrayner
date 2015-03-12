@@ -13,8 +13,6 @@ gem 'bootstrap-sass', '~> 3.3.3'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -25,9 +23,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
 # Use Devise for authentication
 gem 'devise'
 
@@ -37,7 +32,7 @@ gem 'haml'
 # Use Gravatar for avatars
 gem 'gravtastic'
 
-# Use KramDown as our MarkDown processor
+# Use Kramdown as our MarkDown processor
 gem 'kramdown'
 
 # Use NewRelic for monitoring
@@ -50,6 +45,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
 
+  # Get a better error screen
   gem 'better_errors'
   gem 'binding_of_caller'
 end
@@ -69,10 +65,13 @@ group :development, :test do
     gem lib, :git => "git://github.com/rspec/#{lib}.git", :branch => 'master'
   end
 
+  # Use factories to build objects for our tests
   gem 'factory_girl_rails', '~> 4.0'
 
+  # Because who doesn't want a clean database?
   gem 'database_cleaner'
 
+  # Pry > IRB
   gem 'pry'
 end
 

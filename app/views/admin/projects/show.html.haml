@@ -1,3 +1,5 @@
+-content_for :title, "View #{truncate(@project.title, length: 20)} : Projects : Dashboard : Matt Rayner"
+
 .jumbotron
   %h1
     Project Preview
@@ -5,9 +7,4 @@
     = link_to 'All Projects', admin_projects_path, class: 'btn btn-lg btn-default'
     = link_to 'Edit Project', edit_admin_project_path(@project), class: 'btn btn-lg btn-success pull-right'
 
-%h2
-  = @project.title
-%p.lead
-  = @project.intro
-%p
-  = @project.body
+= render 'admin/projects/shared/project_render'
