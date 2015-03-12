@@ -1,5 +1,5 @@
 MattRayner.co.uk
 ===============
-Master: [![Build Status](https://travis-ci.org/mattrayner/mattrayner.svg?branch=master)](https://travis-ci.org/mattrayner/mattrayner) Develop: [![Build Status](https://travis-ci.org/mattrayner/mattrayner.svg?branch=develop)](https://travis-ci.org/mattrayner/mattrayner)
+[![Circle CI](https://circleci.com/gh/mattrayner/mattrayner.svg?style=svg)](https://circleci.com/gh/mattrayner/mattrayner) [![Code Climate](https://codeclimate.com/github/mattrayner/mattrayner/badges/gpa.svg)](https://codeclimate.com/github/mattrayner/mattrayner)  [![Test Coverage](https://codeclimate.com/github/mattrayner/mattrayner/badges/coverage.svg)](https://codeclimate.com/github/mattrayner/mattrayner)
 
 Rails version of my website with CMS included.

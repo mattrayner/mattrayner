@@ -37,6 +37,12 @@ gem 'haml'
 # Use Gravatar for avatars
 gem 'gravtastic'
 
+# Use KramDown as our MarkDown processor
+gem 'kramdown'
+
+# Use NewRelic for monitoring
+gem 'newrelic_rpm'
+
 # Use Capistrano for deployment
 group :development do
   gem 'capistrano'
@@ -69,4 +75,6 @@ group :development, :test do
 
   gem 'pry'
 end
+
+gem 'codeclimate-test-reporter', group: :test, require: nil
 
