@@ -38,6 +38,9 @@ gem 'kramdown'
 # Use NewRelic for monitoring
 gem 'newrelic_rpm'
 
+# User Carrierwave for uploading images
+gem 'carrierwave'
+
 # Use Capistrano for deployment
 group :development do
   gem 'capistrano'

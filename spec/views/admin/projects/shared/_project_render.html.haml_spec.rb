@@ -1,17 +1,33 @@
 require 'rails_helper'
 
 describe 'admin/projects/shared/_project_render' do
-  let(:id)      { 1 }
-  let(:title)   { 'Give Cat' }
-  let(:intro)   { 'A bit of intro text' }
-  let(:body)    { 'A bit of body copy' }
+  let(:id)            { 1 }
+  let(:title)         { 'Give Cat' }
+  let(:intro)         { 'A bit of intro text' }
+  let(:body)          { 'A bit of body copy' }
+  let(:header_image)  { double(HeaderUploader, url: '/path/to/image.jpg') }
+  let(:header_image?) { true }
 
-  let(:project) { double(Project, id: id, title: title, intro: intro, body: body ) }
+  let(:project) { double(Project, id: id, title: title, intro: intro, body: body, header_image: header_image, header_image?: header_image? ) }
 
   before do
     assign(:project, project)
 
     render :partial => 'admin/projects/shared/project_render'
+  end
+
+  context 'with a header_image' do
+    it 'renders the header image' do
+      expect(rendered).to match /#{header_image.url}/
+    end
+  end
+
+  context 'with no header_image' do
+    let(:header_image?) { false }
+
+    it 'does not render the header_image' do
+      expect(rendered).not_to match /#{header_image.url}/
+    end
   end
 
   it 'renders the project title' do

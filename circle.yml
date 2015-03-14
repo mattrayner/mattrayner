@@ -10,6 +10,9 @@ machine:
 
 ## Customize dependencies
 dependencies:
+  pre:
+    - sudo apt-get update && sudo apt-get install imagemagick libfftw3-double3
+
   override:
     - bundle install:
         timeout: 180

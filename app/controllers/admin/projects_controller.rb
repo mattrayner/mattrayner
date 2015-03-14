@@ -56,6 +56,6 @@ class Admin::ProjectsController < Admin::BaseController
   private
 
   def user_params
-    params.require(:project).permit(:title, :intro, :body)
+    params.require(:project).permit(:title, :intro, :body, :header_image, :remove_header_image)
   end
 end

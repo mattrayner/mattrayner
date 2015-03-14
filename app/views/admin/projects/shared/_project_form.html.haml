@@ -6,6 +6,19 @@
       = f.text_field :title, autofocus: true, placeholder: 'Give Cat', class: 'form-control'
 
     .form-group
+      .col-sm-12
+        = f.label :header_image
+      .clearfix
+      - if @project.header_image?
+        .well
+          = image_tag @project.header_image.url, class: 'img-responsive'
+
+        .lead
+          = f.check_box :remove_header_image
+          Remove header image
+      = f.file_field :header_image
+
+    .form-group
       .col-sm-6.pull-left
         = f.label :intro
         %abbr{ class: 'glyphicon glyphicon-sunglasses', title: 'MarkDown enabled' }
