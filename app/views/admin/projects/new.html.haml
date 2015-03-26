@@ -5,10 +5,6 @@
   %p.lead
     Create a project to highlight some portfolio work. Use rich MarkDown to make a project interesting.
 
-= form_for @project, url: admin_projects_path(@project), method: :create do |f|
-  = render 'admin/projects/shared/project_form', f: f
-  .row
-    .col-sm-6.text-left
-      = link_to 'Back', admin_projects_path, class: 'btn btn-lg btn-default'
-    .col-sm-6.text-right
-      = f.submit 'Save', class: 'btn btn-lg btn-success'
+= render 'admin/shared/validation', object: @project
+
+= render 'admin/projects/shared/form'

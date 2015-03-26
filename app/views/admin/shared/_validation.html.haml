@@ -1,0 +1,8 @@
+- if object.invalid?
+  %h3 Validation Errors:
+  .alert.alert-danger
+    - object.errors.messages.each do |message|
+      %h4= message[0].capitalize
+      %ul
+        - message[1].each do |error|
+          %li= error

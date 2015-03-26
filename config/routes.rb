@@ -66,5 +66,6 @@ Rails.application.routes.draw do
     get '/' => 'dashboard#index', as: 'dashboard_index'
 
     resources :projects
+    resources :project_gallery_images, only: [:edit, :update]
   end
 end

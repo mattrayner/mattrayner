@@ -4,3 +4,10 @@
 .lead
   = markdown(@project.intro)
 = markdown(@project.body)
+
+- if @project.gallery_images.present?
+  %h2 Gallery
+  - @project.gallery_images.each do |image|
+    - if image.title.present?
+      %h3= image.title
+    = image_tag image.image.url, class: 'img-responsive'

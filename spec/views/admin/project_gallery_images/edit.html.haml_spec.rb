@@ -1,17 +1,17 @@
 require 'rails_helper'
 
-describe 'admin/projects/edit' do
-  let(:title)   { 'Short' }
-  let(:project) { create(:project, title: title) }
+describe 'admin/project_gallery_images/edit' do
+  let(:title)                 { 'Short' }
+  let(:project_gallery_image) { create(:project_gallery_image, title: title) }
 
   before do
-    assign(:project, project)
+    assign(:project_gallery_image, project_gallery_image)
 
     render
   end
 
   it 'renders the page title' do
-    expect(rendered).to match /Edit\n'#{project.title}'/
+    expect(rendered).to match /Edit\n'#{project_gallery_image.title}'/
   end
 
   it 'renders the project form' do

@@ -1,0 +1,23 @@
+= simple_form_for(@project_gallery_image, url: admin_project_gallery_image_path(@project_gallery_image), html: { class: 'form-horizontal' }) do |form|
+  .row
+    .col-md-8
+      .form-group
+        .col-sm-12
+          = form.label :title
+        = form.text_field :title, class: 'form-control'
+
+      - if @project_gallery_image.image?
+        .well
+          = image_tag @project_gallery_image.image, class: 'img-responsive'
+          = link_to 'See full-size image', @project_gallery_image.image.url, target: '_blank'
+      .form-group
+        .col-sm-12
+          = form.label :image, 'Update image'
+        .clearfix
+        = form.file_field :image
+
+  .row
+    .col-sm-6.text-left
+      = link_to 'Back to Project', admin_project_path(@project_gallery_image.project), class: 'btn btn-lg btn-default'
+    .col-sm-6.text-right
+      = form.submit 'Save', class: 'btn btn-lg btn-success'

@@ -9,20 +9,7 @@
       Project
   %p.lead
     Create a project to highlight some portfolio work. Use rich MarkDown to make a project interesting.
-- if @project.invalid?
-  %h3 Validation Errors:
-  .alert.alert-danger
-    - @project.errors.messages.each do |message|
-      %h4= message[0].capitalize
-      %ul
-        - message[1].each do |error|
-          %li= error
 
-= form_for @project, url: { controller: 'admin/projects', action: :update, id: @project.id } do |f|
-  = render 'admin/projects/shared/project_form', f: f
-  .row
-    .col-sm-6.text-left
-      = link_to 'Back', admin_projects_path, class: 'btn btn-lg btn-default'
-    .col-sm-6.text-right
-      = link_to '<span class="glyphicon glyphicon-trash"></span><span class="sr-only"> Delete</span>'.html_safe, admin_project_path(@project), method: :delete, class: 'btn btn-lg btn-default btn-danger', data: { confirm: 'Are you sure you want to delete this project? This is PERMANENT!' }
-      = f.submit 'Save', class: 'btn btn-lg btn-success'
+= render 'admin/shared/validation', object: @project
+
+= render 'admin/projects/shared/form'

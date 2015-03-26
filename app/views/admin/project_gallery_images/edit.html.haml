@@ -1,0 +1,21 @@
+-content_for :title, "Edit Gallery Image : Project Gallery Images : Projects : Dashboard : Matt Rayner"
+
+.jumbotron
+  %h1
+    Edit
+    - if @project_gallery_image.title.present?
+      = "'#{truncate(@project_gallery_image.title, length: 10)}'"
+    - else
+      Gallery Image
+  %p.lead
+    Use gallery images to bring a project to life.
+- if @project_gallery_image.invalid?
+  %h3 Validation Errors:
+  .alert.alert-danger
+    - @project_gallery_image.errors.messages.each do |message|
+      %h4= message[0].capitalize
+      %ul
+        - message[1].each do |error|
+          %li= error
+
+= render 'admin/project_gallery_images/shared/form'

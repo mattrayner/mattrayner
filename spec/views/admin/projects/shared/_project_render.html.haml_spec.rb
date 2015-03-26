@@ -1,14 +1,15 @@
 require 'rails_helper'
 
 describe 'admin/projects/shared/_project_render' do
-  let(:id)            { 1 }
-  let(:title)         { 'Give Cat' }
-  let(:intro)         { 'A bit of intro text' }
-  let(:body)          { 'A bit of body copy' }
-  let(:header_image)  { double(HeaderUploader, url: '/path/to/image.jpg') }
-  let(:header_image?) { true }
+  let(:id)             { 1 }
+  let(:title)          { 'Give Cat' }
+  let(:intro)          { 'A bit of intro text' }
+  let(:body)           { 'A bit of body copy' }
+  let(:header_image)   { double(HeaderUploader, url: '/path/to/image.jpg') }
+  let(:header_image?)  { true }
+  let(:gallery_images) { [ double(ProjectGalleryImage, title: 'A title', image: double('image', url: '/path/to/image.png', title: 'An image title' ) ) ] }
 
-  let(:project) { double(Project, id: id, title: title, intro: intro, body: body, header_image: header_image, header_image?: header_image? ) }
+  let(:project) { double(Project, id: id, title: title, intro: intro, body: body, header_image: header_image, header_image?: header_image?, gallery_images: gallery_images) }
 
   before do
     assign(:project, project)
@@ -57,5 +58,10 @@ some text
     it 'correctly converts the body into HTML' do
       expect(rendered).to match /<h2 id=\"a-h2\">A H2<\/h2>\n<p>some text\n<em>italics<\/em> and <strong>bold<\/strong><\/p>/
     end
+  end
+
+  it 'renders gallery images' do
+    expect(rendered).to match /#{gallery_images.first.title}/
+    expect(rendered).to match /#{gallery_images.first.image.url}/
   end
 end

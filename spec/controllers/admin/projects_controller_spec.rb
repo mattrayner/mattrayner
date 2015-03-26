@@ -113,7 +113,7 @@ describe Admin::ProjectsController do
         end
 
         it 'renders the edit page' do
-          expect(response).to have_rendered('admin/projects/edit')
+          expect(response).to have_rendered('admin/projects/new')
         end
 
         it 'populates error messages' do
@@ -150,17 +150,30 @@ describe Admin::ProjectsController do
     end
 
     describe '#update' do
-      let(:project) { create(:project) }
+      let(:project)        { create(:project) }
+      let(:gallery_images) do
+        [
+            create(:project_gallery_image, title: 'First image', project: project),
+            create(:project_gallery_image, title: 'Second image', project: project)
+        ]
+      end
 
       let(:title) { 'Give Cat' }
       let(:intro) { 'A little intro' }
       let(:body)  { 'A body' }
+      let(:gallery_image_attributes) do
+        {
+            '0'=>{ id: gallery_images.first.id, remove_image: '1' },
+            '1'=>{ id: gallery_images.last.id, remove_image: '0' }
+        }
+      end
 
       let(:params) do
         {
-            title: title,
-            intro: intro,
-            body:  body
+            title:                     title,
+            intro:                     intro,
+            body:                      body,
+            gallery_images_attributes: gallery_image_attributes
         }
       end
 
@@ -176,6 +189,11 @@ describe Admin::ProjectsController do
         it 'populates @project correctly' do
           instance_project = controller.instance_variable_get(:@project)
           expect(instance_project).to be_a(Project)
+        end
+
+        it 'successfully removes one of the images' do
+          instance_project = controller.instance_variable_get(:@project)
+          expect(instance_project.gallery_images.size).to eq(1)
         end
       end
 

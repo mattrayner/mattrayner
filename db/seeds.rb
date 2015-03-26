@@ -17,7 +17,7 @@ def create_user(email:, password:)
   user.save!
 end
 
-def create_project(title:, intro:, body:)
+def create_project(title:, intro:, body:, attachments: 0)
   puts "\t\t- #{title}"
 
   project = Project.find_or_initialize_by(title: title)
@@ -26,7 +26,22 @@ def create_project(title:, intro:, body:)
 
   project.intro = intro
   project.body  = body
+
   project.save!
+
+  if attachments.to_int > 0
+    (0..attachments.to_int).each do |attachment|
+      gallery_image = ProjectGalleryImage.new
+      gallery_image.project = project
+      gallery_image.title = "Gallery Image ##{attachment+1}"
+
+      File.open('spec/support/files/test_cat.png') do |f|
+        gallery_image.image = f
+      end
+
+      gallery_image.save!
+    end
+  end
 end
 
 puts "\t- Seeding users"
@@ -40,4 +55,5 @@ Conceived in a university library after too many red bulls, I wanted to create a
 ##But why?
 
 That\'s a good question... I noticed one *major* (to me anyway) flaw with Hey Girl. The image selection.
-Hard coded into Hey Girl is an array of 20 something images that the bookmarklet selects at random and uses. This seemed a but too small for me. I wanted to **never** run out of ossum cute things.')
+Hard coded into Hey Girl is an array of 20 something images that the bookmarklet selects at random and uses. This seemed a but too small for me. I wanted to **never** run out of ossum cute things.', attachments: 4)
+create_project(title: 'Megafone', intro: 'A full e-commerce solution for a small remote mobile repair service.', body: 'A bit of body', attachments: 6)
