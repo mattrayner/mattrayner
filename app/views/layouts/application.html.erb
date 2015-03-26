@@ -12,7 +12,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body>
+<body class="<%= params[:controller] %>" id="<%= "#{params[:controller]}-#{params[:action]}" %>">
 
 <% if notice %>
   <p class="alert alert-info"><%= notice %></p>
