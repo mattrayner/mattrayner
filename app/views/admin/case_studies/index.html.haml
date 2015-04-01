@@ -1,0 +1,26 @@
+-content_for :title, 'Case Studies : Dashboard : Matt Rayner'
+
+.jumbotron
+  %h1
+    Case Studies
+    %small= @case_studies.count
+  %p.lead
+    Create a case studies to highlight some portfolio work. Use rich MarkDown to make them interesting.
+  %p
+    = link_to 'Create Case Study', new_admin_case_study_path, class: 'btn btn-lg btn-success', role: 'button'
+
+%table.table
+  %thead
+    %tr
+      %th Title
+      %th Controls
+  %tbody
+    - if @case_studies.count.zero?
+      %tr
+        %td{ colspan: 2 }
+          Please
+          = link_to 'add a case study', new_admin_case_study_path
+          to see it here.
+    - else
+      - @case_studies.each do |case_study|
+        = render 'admin/case_studies/shared/case_study_row', case_study: case_study

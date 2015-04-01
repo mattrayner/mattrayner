@@ -18,8 +18,8 @@ describe 'admin/shared/_navigation' do
     expect(rendered).to match /Live Site/
   end
 
-  it 'renders projects link' do
-    expect(rendered).to match /Projects/
+  it 'renders case studies link' do
+    expect(rendered).to match /Case Studies/
   end
 
   context 'user dropdown' do

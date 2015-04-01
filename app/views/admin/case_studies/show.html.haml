@@ -1,0 +1,10 @@
+-content_for :title, "View #{truncate(@case_study.title, length: 20)} : Case Studies : Dashboard : Matt Rayner"
+
+.jumbotron
+  %h1
+    Case Study Preview
+  %p
+    = link_to 'All Case Studies', admin_case_studies_path, class: 'btn btn-lg btn-default'
+    = link_to 'Edit Case Study', edit_admin_case_study_path(@case_study), class: 'btn btn-lg btn-success pull-right'
+
+= render 'admin/case_studies/shared/case_study_render'

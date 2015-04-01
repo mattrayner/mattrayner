@@ -1,0 +1,13 @@
+= image_tag @case_study.header_image.url if @case_study.header_image?
+%h1
+  = @case_study.title
+.lead
+  = markdown(@case_study.intro)
+= markdown(@case_study.body)
+
+- if @case_study.gallery_images.present?
+  %h2 Gallery
+  - @case_study.gallery_images.each do |image|
+    - if image.title.present?
+      %h3= image.title
+    = image_tag image.image.url, class: 'img-responsive'
