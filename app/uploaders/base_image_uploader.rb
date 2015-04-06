@@ -1,3 +1,11 @@
+# Base Image Uploader class, containing a number of attributes shared among the uploaders within the app.
+# Contains a number of defaults including, but not limited to:
+#   Storage location
+#   Default images
+#   Accepted extensions
+#
+# @author Matthew Rayner
+# @since 0.1
 class BaseImageUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   storage :file

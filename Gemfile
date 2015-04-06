@@ -18,8 +18,6 @@ gem 'devise'
 gem 'carrierwave'
 gem 'simple_form'
 
-gem 'yard'
-
 gem 'newrelic_rpm'
 
 group :development do
@@ -51,4 +49,6 @@ group :development, :test do
   gem 'database_cleaner'
 
   gem 'pry'
+
+  gem 'yard'
 end
