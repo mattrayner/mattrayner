@@ -5,6 +5,13 @@
   = markdown(@case_study.intro)
 = markdown(@case_study.body)
 
+- if @case_study.skills.present?
+  %h2 Skills
+  - @case_study.skills.each do |skill|
+    .col-md-4.case-study-skill
+      %h3= link_to skill.title, admin_skill_path(skill)
+  .clearfix
+
 - if @case_study.gallery_images.present?
   %h2 Gallery
   - @case_study.gallery_images.each do |image|

@@ -53,16 +53,16 @@ class Admin::CaseStudiesController < Admin::BaseController
     @case_study.destroy
 
     if @case_study.frozen?
-      return redirect_to admin_case_studies_path, notice: 'Case study successfully deleted!'
+      redirect_to admin_case_studies_path, notice: 'Case study successfully deleted!'
     else
-      return redirect_to admin_case_studies_path, alert: 'Error when deleting case study...'
+      redirect_to admin_case_studies_path, alert: 'Error when deleting case study...'
     end
   end
 
   private
 
   def case_study_params
-      params.require(:case_study).permit(:title, :intro, :body, :header_image, :remove_header_image, gallery_images_attributes: [:id, :case_study_id, :image, :remove_image])
+      params.require(:case_study).permit(:title, :intro, :body, :header_image, :remove_header_image, {:skill_ids => []}, gallery_images_attributes: [:id, :case_study_id, :image, :remove_image])
   end
 
   def create_gallery_images

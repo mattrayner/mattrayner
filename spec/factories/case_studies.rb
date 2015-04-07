@@ -4,6 +4,7 @@ FactoryGirl.define do
     intro 'A bookmarklet to replace all the images on a web page with cats!'
     body  'Inspired by [http://heygirl.io/](Hey Girl) - build with Javascript and PHP.'
     header_image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'files', 'test_cat.png')) }
+    skills {[create(:skill), create(:skill)]}
 
     factory :case_study_with_gallery_images do
       transient do

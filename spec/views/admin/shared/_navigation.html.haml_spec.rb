@@ -22,6 +22,10 @@ describe 'admin/shared/_navigation' do
     expect(rendered).to match /Case Studies/
   end
 
+  it 'renders skills link' do
+    expect(rendered).to match /Skills/
+  end
+
   context 'user dropdown' do
     it 'renders the user gravatar' do
       expect(rendered).to match /https:\/\/secure.gravatar.com\/avatar\/654c203f4d1c78392370aeb8325bbb58.png/

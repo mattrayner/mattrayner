@@ -1,0 +1,26 @@
+-content_for :title, 'Skills : Dashboard : Matt Rayner'
+
+.jumbotron
+  %h1
+    Skills
+    %small= @skills.count
+  %p.lead
+    Create skills and link them to case studies to show your ability.
+  %p
+    = link_to 'Create Skill', new_admin_skill_path, class: 'btn btn-lg btn-success', role: 'button'
+
+%table.table
+  %thead
+    %tr
+      %th Title
+      %th Controls
+  %tbody
+    - if @skills.count.zero?
+      %tr
+        %td{ colspan: 2 }
+          Please
+          = link_to 'add a skill', new_admin_skill_path
+          to see it here.
+    - else
+      - @skills.each do |skill|
+        = render 'admin/skills/shared/skill_row', skill: skill

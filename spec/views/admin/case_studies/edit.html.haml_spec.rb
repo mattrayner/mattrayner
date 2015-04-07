@@ -15,7 +15,7 @@ describe 'admin/case_studies/edit' do
   end
 
   it 'renders the case study form' do
-    expect(rendered).to match /Save/
+    expect(view).to render_template(partial: 'admin/case_studies/shared/_form_fields')
   end
 
   context 'with a long title' do

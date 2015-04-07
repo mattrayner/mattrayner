@@ -112,7 +112,7 @@ describe Admin::CaseStudiesController do
           @case_study = controller.instance_variable_get(:@case_study)
         end
 
-        it 'renders the edit page' do
+        it 'renders the new page' do
           expect(response).to have_rendered('admin/case_studies/new')
         end
 

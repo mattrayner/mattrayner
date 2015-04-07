@@ -1,0 +1,23 @@
+-content_for :title, "View #{truncate(@skill.title, length: 20)} : Skills : Dashboard : Matt Rayner"
+
+.jumbotron
+  %h1
+    Skill Preview
+  %p
+    = link_to 'All Skills', admin_skills_path, class: 'btn btn-lg btn-default'
+    = link_to 'Edit Skill', edit_admin_skill_path(@skill), class: 'btn btn-lg btn-success pull-right'
+
+%h2
+  = @skill.title
+.progress
+  .progress-bar{ role: 'progressbar', aria: { valuenow: "#{@skill.level}", valuemin: '0', valuemax: '100' }, style: "width: #{@skill.level}%;" }
+    %span.sr-only= "#{@skill.level}%"
+
+- if @skill.case_studies
+  .row-fluid
+    - @skill.case_studies.each do |case_study|
+      .col-md-4.skill-case-study
+        %h3= link_to case_study.title, admin_case_study_path(case_study)
+        - if case_study.intro.present?
+          .case-study-intro
+            = markdown(case_study.intro)

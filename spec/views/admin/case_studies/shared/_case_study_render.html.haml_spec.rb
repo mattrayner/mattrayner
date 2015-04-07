@@ -5,11 +5,8 @@ describe 'admin/case_studies/shared/_case_study_render' do
   let(:title)          { 'Give Cat' }
   let(:intro)          { 'A bit of intro text' }
   let(:body)           { 'A bit of body copy' }
-  let(:header_image)   { double(HeaderUploader, url: '/path/to/image.jpg') }
-  let(:header_image?)  { true }
-  let(:gallery_images) { [ double(CaseStudyGalleryImage, title: 'A title', image: double('image', url: '/path/to/image.png', title: 'An image title' ) ) ] }
 
-  let(:case_study) { double(CaseStudy, id: id, title: title, intro: intro, body: body, header_image: header_image, header_image?: header_image?, gallery_images: gallery_images) }
+  let(:case_study) { create(:case_study_with_gallery_images, id: id, title: title, intro: intro, body: body) }
 
   before do
     assign(:case_study, case_study)
@@ -19,15 +16,7 @@ describe 'admin/case_studies/shared/_case_study_render' do
 
   context 'with a header_image' do
     it 'renders the header image' do
-      expect(rendered).to match /#{header_image.url}/
-    end
-  end
-
-  context 'with no header_image' do
-    let(:header_image?) { false }
-
-    it 'does not render the header_image' do
-      expect(rendered).not_to match /#{header_image.url}/
+      expect(rendered).to match /#{case_study.header_image.url}/
     end
   end
 
@@ -61,7 +50,7 @@ some text
   end
 
   it 'renders gallery images' do
-    expect(rendered).to match /#{gallery_images.first.title}/
-    expect(rendered).to match /#{gallery_images.first.image.url}/
+    expect(rendered).to match /#{case_study.gallery_images.first.title}/
+    expect(rendered).to match /#{case_study.gallery_images.first.image.url}/
   end
 end

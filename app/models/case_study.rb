@@ -6,4 +6,6 @@ class CaseStudy < ActiveRecord::Base
 
   has_many :gallery_images, :foreign_key => 'case_study_id', :class_name => 'CaseStudyGalleryImage'
   accepts_nested_attributes_for :gallery_images
+
+  has_and_belongs_to_many :skills
 end

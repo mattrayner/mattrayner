@@ -36,9 +36,7 @@ end
 
 group :development, :test do
   gem 'byebug'
-
   gem 'web-console', '~> 2.0'
-
   gem 'spring'
 
   %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
@@ -47,8 +45,6 @@ group :development, :test do
 
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
-
   gem 'pry'
-
   gem 'yard'
 end

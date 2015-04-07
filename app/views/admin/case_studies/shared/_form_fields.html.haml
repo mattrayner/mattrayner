@@ -1,9 +1,6 @@
-.row
+.row-fluid
   .col-md-8
-    .form-group
-      .col-sm-12
-        = form.label :title
-      = form.text_field :title, autofocus: true, placeholder: 'Give Cat', class: 'form-control'
+    = form.input :title, autofocus: true, placeholder: 'Give Cat', class: 'form-control'
 
     .form-group
       .col-sm-12
@@ -26,7 +23,7 @@
         = link_to '', 'http://kramdown.gettalong.org/quickref.html', class: 'glyphicon glyphicon-question-sign'
       = form.text_area :intro, placeholder: 'Lorem Ipsum Dolor Sit Amit... (max-length 300)', class: 'form-control', maxsize: 300
 
-.row
+.row-fluid
   .col-md-8
     .form-group
       .col-sm-6.pull-left
@@ -46,7 +43,10 @@
         Break up any large chunks of text. Use bold and italic sparingly and link often.
       %p
         Think about SEO. This section will be picked out by search engines. It's important to get this right. Your product is you, and what you can do.
-.row
+.row-fluid
+  .col-md-8
+    = form.association :skills
+.row-fluid
   .col-md-8
     .form-group
       .col-sm-12
@@ -78,7 +78,7 @@
         = form.label :image, 'Add Images'
       .clearfix
       = form.file_field :image, :multiple => true, name: 'case_study_gallery_images[images][]'
-.row
+.row-fluid
   .col-xs-6.text-left
     = link_to 'Back to Case Studies', admin_case_studies_path, class: 'btn btn-lg btn-default'
   .col-xs-6.text-right
