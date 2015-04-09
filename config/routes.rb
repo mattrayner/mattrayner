@@ -69,5 +69,7 @@ Rails.application.routes.draw do
     resources :case_study_gallery_images, only: [:edit, :update]
 
     resources :skills
+
+    resources :curriculum_vitaes
   end
 end

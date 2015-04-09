@@ -1,0 +1,13 @@
+-content_for :title, "Edit CV : CVs : Dashboard : Matt Rayner"
+
+.jumbotron
+  %h1
+    Edit CV
+  %p.lead
+    Upload your latest CV for people to download...
+    %strong Note:
+    remember to redact private information!
+= render 'admin/shared/validation', object: @curriculum_vitae
+
+= simple_form_for(@curriculum_vitae, url: admin_curriculum_vitae_path(@curriculum_vitae), html: { class: 'form-horizontal' }) do |form|
+  = render 'admin/curriculum_vitaes/shared/form_fields', form: form

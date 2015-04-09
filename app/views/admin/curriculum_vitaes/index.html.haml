@@ -1,0 +1,30 @@
+-content_for :title, 'CVs : Dashboard : Matt Rayner'
+
+.jumbotron
+  %h1
+    CVs
+    %small= @curriculum_vitaes.count
+  %p.lead
+    Upload your latest CV for people to download...
+  %p
+    = link_to 'Add CV', new_admin_curriculum_vitae_path, class: 'btn btn-lg btn-success', role: 'button'
+
+%table.table
+  %thead
+    %tr
+      %th Updated at
+      %th Controls
+  %tbody
+    - if @curriculum_vitaes.count.zero?
+      %tr
+        %td{ colspan: 2 }
+          Please
+          = link_to 'add a cv', new_admin_curriculum_vitae_path
+          to see it here.
+    - else
+      - @curriculum_vitaes.each do |cv|
+        %tr
+          %td= link_to cv.updated_at.utc, admin_curriculum_vitae_path(cv)
+          %td.text-right
+            = link_to '<span class="glyphicon glyphicon-pencil"></span><span class="sr-only"> Edit</span>'.html_safe, edit_admin_curriculum_vitae_path(cv), class: 'btn btn-default'
+            = link_to '<span class="glyphicon glyphicon-trash"></span><span class="sr-only"> Delete</span>'.html_safe, admin_curriculum_vitae_path(cv), method: :delete, class: 'btn btn-default btn-danger', data: { confirm: 'Are you sure you want to delete this cv? This is PERMANENT!' }

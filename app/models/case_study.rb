@@ -1,5 +1,5 @@
 class CaseStudy < ActiveRecord::Base
-  validates :title, :body, presence: true
+  validates :title, :body, presence: { message: 'A good, descriptive title is required. It also adds to the tone of a case study.' }
   validates_length_of :title, maximum: 255
 
   mount_uploader :header_image, HeaderUploader

@@ -10,11 +10,7 @@
         .well
           = image_tag @case_study_gallery_image.image, class: 'img-responsive'
           = link_to 'See full-size image', @case_study_gallery_image.image.url, target: '_blank'
-      .form-group
-        .col-sm-12
-          = form.label :image, 'Update image'
-        .clearfix
-        = form.file_field :image
+      = form.input :image, input_html: { accept: '.jpg,.jpeg,.gif,.png' }
 
   .row
     .col-sm-6.text-left

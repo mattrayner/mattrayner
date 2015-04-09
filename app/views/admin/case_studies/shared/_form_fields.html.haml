@@ -2,18 +2,14 @@
   .col-md-8
     = form.input :title, autofocus: true, placeholder: 'Give Cat', class: 'form-control'
 
-    .form-group
-      .col-sm-12
-        = form.label :header_image
-      .clearfix
-      - if @case_study.header_image?
-        .well
-          = image_tag @case_study.header_image.url, class: 'img-responsive'
+    - if @case_study.header_image?
+      .well
+        = image_tag @case_study.header_image.url, class: 'img-responsive'
 
-        .lead
-          = form.check_box :remove_header_image
-          Remove header image
-      = form.file_field :header_image
+      .lead
+        = form.check_box :remove_header_image
+        Remove header image
+    = form.input :header_image, input_html: { accept: '.jpg,.jpeg,.gif,.png' }
 
     .form-group
       .col-sm-6.pull-left
@@ -77,7 +73,7 @@
       .col-sm-12
         = form.label :image, 'Add Images'
       .clearfix
-      = form.file_field :image, :multiple => true, name: 'case_study_gallery_images[images][]'
+      = form.file_field :image, :multiple => true, name: 'case_study_gallery_images[images][]', accept: '.jpg,.jpeg,.gif,.png'
 .row-fluid
   .col-xs-6.text-left
     = link_to 'Back to Case Studies', admin_case_studies_path, class: 'btn btn-lg btn-default'

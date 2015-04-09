@@ -1,0 +1,11 @@
+.row-fluid
+  .col-md-8
+    = form.input :file, hint: 'File must be a PDF.', input_html: { accept: '.pdf' }
+    = form.input :note
+
+.row-fluid
+  .col-xs-6.text-left
+    = link_to 'Back', admin_curriculum_vitaes_path, class: 'btn btn-lg btn-default'
+  .col-xs-6.text-right
+    = link_to '<span class="glyphicon glyphicon-trash"></span><span class="sr-only"> Delete</span>'.html_safe, admin_curriculum_vitae_path(@curriculum_vitae), method: :delete, class: 'btn btn-lg btn-default btn-danger', data: { confirm: 'Are you sure you want to delete this CV? This is PERMANENT!' } unless @curriculum_vitae.new_record?
+    = form.submit 'Save', class: 'btn btn-lg btn-success'

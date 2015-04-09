@@ -21,6 +21,9 @@
         %li{ class: if(params[:controller] == 'admin/skills') then 'active' end }
           %a{ href: admin_skills_path }
             Skills
+        %li{ class: if(params[:controller] == 'admin/cvs') then 'active' end }
+          %a{ href: admin_curriculum_vitaes_path }
+            CVs
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{ href: '#', data: { toggle: 'dropdown', role: 'button' }, aria: { expanded: 'false' } }

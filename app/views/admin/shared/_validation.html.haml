@@ -1,4 +1,6 @@
-- if object.invalid?
+- if object.errors.any?
   .alert.alert-danger
     %strong Warning
-    There are error(s). Please fix them before trying again.
+    There are
+    %strong= object.errors.count
+    error(s). Please fix them before trying again.

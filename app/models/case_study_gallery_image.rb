@@ -1,5 +1,5 @@
 class CaseStudyGalleryImage < ActiveRecord::Base
-  validates :image, presence: true
+  validates :image, presence: { message: 'Image is required.' }
   validates_length_of :title, maximum: 255
 
   mount_uploader :image, GalleryImageUploader

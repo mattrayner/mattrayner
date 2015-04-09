@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'admin/case_studies/index' do
   let(:case_studies_array) do
-    [ double(CaseStudy, title: 'Case Study 1', id: 1), double(CaseStudy, title: 'Case Study 2', id: 2) ]
+    [ create(:case_study, title: 'Case Study 1', id: 1), create(:case_study, title: 'Case Study 2', id: 2) ]
   end
 
   before do
