@@ -1,5 +1,6 @@
 %tr
   %td
+    = image_tag case_study.header_image.thumb.url, class: 'img-responsive' if case_study.header_image?
     = link_to case_study.title, admin_case_study_path(case_study)
   %td.text-right
     = link_to '<span class="glyphicon glyphicon-pencil"></span><span class="sr-only"> Edit</span>'.html_safe, edit_admin_case_study_path(case_study), class: 'btn btn-default'

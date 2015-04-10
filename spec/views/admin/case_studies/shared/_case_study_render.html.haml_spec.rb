@@ -16,7 +16,7 @@ describe 'admin/case_studies/shared/_case_study_render' do
 
   context 'with a header_image' do
     it 'renders the header image' do
-      expect(rendered).to match /#{case_study.header_image.url}/
+      expect(rendered).to match /#{case_study.header_image.banner.url}/
     end
   end
 

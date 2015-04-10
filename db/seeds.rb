@@ -41,6 +41,10 @@ def create_case_study(title:, intro:, body:, attachments: 0, skills: [])
   case_study.intro = intro
   case_study.body  = body
 
+  File.open('spec/support/files/test_cat.png') do |f|
+    case_study.header_image = f
+  end
+
   case_study.save!
 
   if attachments.to_int > 0

@@ -7,6 +7,8 @@
 # @author Matthew Rayner
 # @since 0.1
 class BaseImageUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
+
   # Choose what kind of storage to use for this uploader:
   storage :file
 
@@ -25,5 +27,13 @@ class BaseImageUploader < CarrierWave::Uploader::Base
   # For images you might use something like this:
   def extension_white_list
     %w(jpg jpeg gif png)
+  end
+
+  version :thumb do
+    process resize_to_fill: [150, 150]
+  end
+
+  version :small_thumb, from_version: :thumb do
+    process resize_to_fill: [50, 50]
   end
 end

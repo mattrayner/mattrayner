@@ -13,6 +13,7 @@ gem 'turbolinks'
 gem 'haml'
 gem 'gravtastic'
 gem 'kramdown'
+gem 'mini_magick'
 
 gem 'devise'
 gem 'carrierwave'

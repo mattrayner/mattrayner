@@ -3,6 +3,11 @@
 # @author Matthew Rayner
 # @since 0.1
 class HeaderUploader < BaseImageUploader
-  # @todo Add multiple image sizes and conversion through ImageMagick
-  #   We should cater for a number of different image sizes (for mobile up to wide screen desktops)
+  version :retina_banner do
+    process resize_to_fill: [2400, 760]
+  end
+
+  version :banner, from_version: :retina_banner do
+    process resize_to_fill: [1200, 380]
+  end
 end

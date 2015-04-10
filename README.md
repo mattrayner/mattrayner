@@ -14,6 +14,12 @@ $ git clone git@github.com:mattrayner/mattrayner.git
 $ cd mattrayner
 ```
 
+Install ImageMagick for image resizing
+
+```bash
+$ brew install imagemagick
+```
+
 Install all of the GEM dependencies with [bundler](http://bundler.io/):
 
 ```bash

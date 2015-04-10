@@ -27,7 +27,7 @@
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{ href: '#', data: { toggle: 'dropdown', role: 'button' }, aria: { expanded: 'false' } }
-            = image_tag current_user.gravatar_url, class: 'img-circle'
+            = image_tag current_user.gravatar_url, class: 'img-circle', width: 18, height: 18
             %span.caret
           %ul.dropdown-menu.inverse-dropdown{ role: 'menu' }
             %li
