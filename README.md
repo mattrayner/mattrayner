@@ -20,6 +20,14 @@ Install ImageMagick for image resizing
 $ brew install imagemagick
 ```
 
+Copy environment template
+
+```bash
+$ cp .env.sample .env
+```
+
+**Note:** To update external API data, please ensure you fill in the .env file with applicable data.
+
 Install all of the GEM dependencies with [bundler](http://bundler.io/):
 
 ```bash

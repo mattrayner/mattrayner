@@ -68,6 +68,8 @@ Rails.application.routes.draw do
     resources :case_studies
     resources :case_study_gallery_images, only: [:edit, :update]
 
+    resources :fit_bit_stats, only: [:index]
+
     resources :skills
 
     resources :curriculum_vitaes

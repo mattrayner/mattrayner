@@ -66,6 +66,18 @@ def create_case_study(title:, intro:, body:, attachments: 0, skills: [])
   end
 end
 
+def create_fit_bit_stat(steps:, floors:, age:)
+  unless FitBitStats.find_by(steps: steps, floors: floors, created_at: age)
+    puts "\t\t\t- Creating (steps: #{steps}, floors: #{floors})..."
+
+    stat = FitBitStats.new(steps: steps, floors: floors)
+    stat.created_at = age
+    stat.save
+  else
+    puts "\t\t\t- Already Exists... Skipping"
+  end
+end
+
 puts "\t- Seeding users"
 create_user(email: 'admin@example.com', password: 'mj$jCh@%mvhhNbpn!IXKZPWD66Fs0LOkfkuw^VOtwU@x&@57KTAmqjh*w2ZGa%FJI8jl0lws*r2rcsE2&6Jq$k5jEPBNd^M$VB6S')
 
@@ -84,3 +96,10 @@ Conceived in a university library after too many red bulls, I wanted to create a
 That\'s a good question... I noticed one *major* (to me anyway) flaw with Hey Girl. The image selection.
 Hard coded into Hey Girl is an array of 20 something images that the bookmarklet selects at random and uses. This seemed a but too small for me. I wanted to **never** run out of ossum cute things.', attachments: 4, skills: [ruby_skill, html_skill])
 create_case_study(title: 'Megafone', intro: 'A full e-commerce solution for a small remote mobile repair service.', body: 'A bit of body', attachments: 6, skills: [php_skill, html_skill])
+
+puts "\t- Seed FitBit data..."
+create_fit_bit_stat(steps: 0, floors: 0, age: 75.minutes.ago)
+create_fit_bit_stat(steps: 123, floors: 1, age: 60.minutes.ago)
+create_fit_bit_stat(steps: 456, floors: 2, age: 45.minutes.ago)
+create_fit_bit_stat(steps: 789, floors: 3, age: 30.minutes.ago)
+create_fit_bit_stat(steps: 1011, floors: 4, age: 15.minutes.ago)
