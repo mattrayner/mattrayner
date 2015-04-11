@@ -1,0 +1,10 @@
+-content_for :title, "View CV ##{@curriculum_vitae.id} : CVs : Dashboard : Matt Rayner"
+
+.jumbotron
+  %h1
+    Case Study Preview
+  %p
+    = link_to 'All CVs', admin_curriculum_vitaes_path, class: 'btn btn-lg btn-default'
+    = link_to 'Edit CV', edit_admin_curriculum_vitae_path(@curriculum_vitae), class: 'btn btn-lg btn-success pull-right'
+
+= render 'admin/curriculum_vitaes/shared/curriculum_vitae_render'

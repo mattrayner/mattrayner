@@ -1,0 +1,11 @@
+-content_for :title, 'New Skill : Dashboard : Matt Rayner'
+
+.jumbotron
+  %h1= "Edit '#{@skill.title}'"
+  %p.lead
+    Create a skill and link it to case studies to show your ability.
+
+= render 'admin/shared/validation', object: @skill
+
+= simple_form_for(@skill, url: admin_skill_path(@skill), html: { class: 'form-horizontal' }) do |form|
+  = render 'admin/skills/shared/form_fields', form: form

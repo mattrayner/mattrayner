@@ -1,0 +1,16 @@
+-content_for :title, "Edit #{truncate(@case_study.title, length: 20)} : Case Studies : Dashboard : Matt Rayner"
+
+.jumbotron
+  %h1
+    Edit
+    - if @case_study.title.present?
+      = "'#{truncate(@case_study.title, length: 10)}'"
+    - else
+      Case Study
+  %p.lead
+    Create a case study to highlight some portfolio work. Use rich MarkDown to make it interesting.
+
+= render 'admin/shared/validation', object: @case_study
+
+= simple_form_for(@case_study, url: admin_case_study_path(@case_study), html: { class: 'form-horizontal' }) do |form|
+  = render 'admin/case_studies/shared/form_fields', form: form

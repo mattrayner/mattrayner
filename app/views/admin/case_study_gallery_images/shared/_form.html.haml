@@ -1,0 +1,19 @@
+= simple_form_for(@case_study_gallery_image, url: admin_case_study_gallery_image_path(@case_study_gallery_image), html: { class: 'form-horizontal' }) do |form|
+  .row
+    .col-md-8
+      .form-group
+        .col-sm-12
+          = form.label :title
+        = form.text_field :title, class: 'form-control'
+
+      - if @case_study_gallery_image.image?
+        .well
+          = image_tag @case_study_gallery_image.image, class: 'img-responsive'
+          = link_to 'See full-size image', @case_study_gallery_image.image.url, target: '_blank'
+      = form.input :image, input_html: { accept: '.jpg,.jpeg,.gif,.png' }
+
+  .row
+    .col-sm-6.text-left
+      = link_to 'Back to Case Study', admin_case_study_path(@case_study_gallery_image.case_study), class: 'btn btn-lg btn-default'
+    .col-sm-6.text-right
+      = form.submit 'Save', class: 'btn btn-lg btn-success'

@@ -1,0 +1,33 @@
+-content_for :title, 'FitBit Stats : Activities : Dashboard : Matt Rayner'
+
+.jumbotron
+  %h1
+    FitBit Stats
+    %small
+      = distance_of_time_in_words_to_now(@fit_bit_stats.created_at)
+      ago.
+
+.row
+  %h2 Current Stats:
+  .col-xs-6.text-center
+    %h3 Steps
+    .well.lead= @fit_bit_stats.steps
+  .col-xs-6.text-center
+    %h3 Floors
+    .well.lead= @fit_bit_stats.floors
+
+.row
+  %h2 History:
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Age
+        %th Steps
+        %th Floors
+    %tbody
+      - @fit_bit_history.each do |stat|
+        %tr
+          %td
+            = distance_of_time_in_words_to_now(stat.created_at)
+          %td= stat.steps
+          %td= stat.floors

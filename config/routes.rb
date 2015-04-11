@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
+  devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }, skip: [:registrations]
+  as :user do
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    put 'users' => 'devise/registrations#update', :as => 'user_registration'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -58,8 +63,15 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   namespace :admin do
-    get '/' => 'dashboard#index'
+    get '/' => 'dashboard#index', as: 'dashboard_index'
 
-    resources :projects
+    resources :case_studies
+    resources :case_study_gallery_images, only: [:edit, :update]
+
+    resources :fit_bit_stats, only: [:index]
+
+    resources :skills
+
+    resources :curriculum_vitaes
   end
 end

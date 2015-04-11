@@ -1,0 +1,11 @@
+.row
+  .col-md-8
+    = form.input :title, autofocus: true, placeholder: 'Ruby', class: 'form-control'
+    = form.input :level, autofocus: true, placeholder: '50.0', class: 'form-control'
+    = form.association :case_studies
+.row
+  .col-xs-6.text-left
+    = link_to 'Back to Skills', admin_skills_path, class: 'btn btn-lg btn-default'
+  .col-xs-6.text-right
+    = link_to '<span class="glyphicon glyphicon-trash"></span><span class="sr-only"> Delete</span>'.html_safe, admin_skill_path(@skill), method: :delete, class: 'btn btn-lg btn-default btn-danger', data: { confirm: 'Are you sure you want to delete this skill? This is PERMANENT!' } unless @skill.new_record?
+    = form.submit 'Save', class: 'btn btn-lg btn-success'

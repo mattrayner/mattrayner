@@ -1,0 +1,6 @@
+%a.btn.btn-lg.btn-success{ href: @curriculum_vitae.file.url, target: '_blank' }
+  Download CV
+  %span.glyphicon.glyphicon-download
+- if @curriculum_vitae.note.present?
+  %h3 Notes
+  %p= @curriculum_vitae.note

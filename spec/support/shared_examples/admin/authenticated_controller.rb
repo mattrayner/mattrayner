@@ -1,4 +1,4 @@
-shared_examples 'an authenticated controller' do |action|
+shared_examples 'an authenticated controller' do |action, params|
   describe 'as logged in user' do
     before do
       sign_in create(:user)
@@ -6,7 +6,7 @@ shared_examples 'an authenticated controller' do |action|
 
     describe "#{action}" do
       before do
-        get action.to_sym
+        get action.to_sym, params
       end
 
       it 'returns a 200 status code' do

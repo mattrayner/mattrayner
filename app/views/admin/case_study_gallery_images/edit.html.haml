@@ -1,0 +1,21 @@
+-content_for :title, "Edit Gallery Image : Case Study Gallery Images : Case Studies : Dashboard : Matt Rayner"
+
+.jumbotron
+  %h1
+    Edit
+    - if @case_study_gallery_image.title.present?
+      = "'#{truncate(@case_study_gallery_image.title, length: 10)}'"
+    - else
+      Gallery Image
+  %p.lead
+    Use gallery images to bring a case study to life.
+- if @case_study_gallery_image.invalid?
+  %h3 Validation Errors:
+  .alert.alert-danger
+    - @case_study_gallery_image.errors.messages.each do |message|
+      %h4= message[0].capitalize
+      %ul
+        - message[1].each do |error|
+          %li= error
+
+= render 'admin/case_study_gallery_images/shared/form'

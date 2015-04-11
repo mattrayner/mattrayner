@@ -1,0 +1,30 @@
+## Customize the test machine
+machine:
+  timezone:
+    Europe/London # Set the timezone
+
+  # Version of ruby to use
+  ruby:
+    version:
+      2.2.1
+
+## Customize dependencies
+dependencies:
+  pre:
+    - sudo apt-get update && sudo apt-get install imagemagick libfftw3-double3
+
+  override:
+    - bundle install:
+        timeout: 180
+
+## Add Rubocop to the test process
+test:
+  post:
+    - bundle exec rubocop
+
+## Customize deployment commands
+deployment:
+  development:
+    branch: develop
+    commands:
+      - bundle exec cap development deploy
