@@ -20,16 +20,16 @@ describe Admin::CaseStudyGalleryImagesController do
           end
 
           it 'creates a @case_study_gallery_image variable' do
-            instance_variable = controller.instance_variable_get(:@case_study_gallery_image)
-            expect(instance_variable).not_to be_nil
+            var = controller.instance_variable_get(:@case_study_gallery_image)
+            expect(var).not_to be_nil
           end
         end
 
-          context 'with an invalid id' do
+        context 'with an invalid id' do
           it 'raises an error' do
-            expect {
-              get :edit, id: 10000
-            }.to raise_error(ActionController::RoutingError)
+            expect do
+              get :edit, id: 1000
+            end.to raise_error(ActionController::RoutingError)
           end
         end
       end
@@ -40,23 +40,27 @@ describe Admin::CaseStudyGalleryImagesController do
 
         let(:params) do
           {
-              title: title,
-              image: image
+            title: title,
+            image: image
           }
         end
 
         context 'with a valid id' do
           before do
-            post :update, id: case_study_gallery_image.id, case_study_gallery_image: params
+            post :update,
+                 id: case_study_gallery_image.id,
+                 case_study_gallery_image: params
           end
 
           it 'renders the show template' do
-            expect(response).to redirect_to(edit_admin_case_study_gallery_image_path(case_study_gallery_image.id))
+            image = case_study_gallery_image
+            path = edit_admin_case_study_gallery_image_path(image)
+            expect(response).to redirect_to(path)
           end
 
           it 'populates @case_study_gallery_image correctly' do
-            instance_image = controller.instance_variable_get(:@case_study_gallery_image)
-            expect(instance_image).to be_a(CaseStudyGalleryImage)
+            var = controller.instance_variable_get(:@case_study_gallery_image)
+            expect(var).to be_a(CaseStudyGalleryImage)
           end
 
           it 'creates a success notice' do
@@ -66,9 +70,9 @@ describe Admin::CaseStudyGalleryImagesController do
 
         context 'with an invalid id' do
           it 'raises an error' do
-            expect {
+            expect do
               post :update, id: 1000, case_study_gallery_image: params
-            }.to raise_error(ActionController::RoutingError)
+            end.to raise_error(ActionController::RoutingError)
           end
         end
       end

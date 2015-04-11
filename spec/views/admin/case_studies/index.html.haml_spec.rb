@@ -2,7 +2,14 @@ require 'rails_helper'
 
 describe 'admin/case_studies/index' do
   let(:case_studies_array) do
-    [ create(:case_study, title: 'Case Study 1', id: 1), create(:case_study, title: 'Case Study 2', id: 2) ]
+    [
+      create(:case_study,
+             title: 'Case Study 1',
+             id: 1),
+      create(:case_study,
+             title: 'Case Study 2',
+             id: 2)
+    ]
   end
 
   before do
@@ -13,11 +20,12 @@ describe 'admin/case_studies/index' do
 
   context 'with multiple case studies' do
     it 'renders the page header' do
-      expect(rendered).to match /<h1>\nCase Studies\n<small>#{case_studies_array.count}<\/small>\n<\/h1>\n/
+      expect(rendered).to match(/<small>#{case_studies_array.count}</)
     end
 
     it 'renders multiple product rows' do
-      expect(view).to render_template(partial: 'admin/case_studies/shared/_case_study_row', count: case_studies_array.count)
+      partial = 'admin/case_studies/shared/_case_study_row'
+      expect(view).to render_template(partial: partial, count: 2)
     end
   end
 
@@ -25,11 +33,11 @@ describe 'admin/case_studies/index' do
     let(:case_studies_array) { [] }
 
     it 'renders the page header' do
-      expect(rendered).to match /<h1>\nCase Studies\n<small>0<\/small>\n<\/h1>\n/
+      expect(rendered).to match(/<small>0</)
     end
 
     it 'renders the placeholder table row' do
-      expect(rendered).to match /Please\n<a href=\"\/admin\/case_studies\/new\">add a case study<\/a>\nto see it here.\n/
+      expect(rendered).to match(%r{add a case study<\/a>\nto see it here.\n})
     end
   end
 end

@@ -14,7 +14,7 @@ describe 'admin/skills/edit' do
   end
 
   it 'renders the page title' do
-    expect(rendered).to match /Edit '#{title}'/
+    expect(rendered).to match(/Edit '#{title}'/)
   end
 
   it 'renders the form fields' do
@@ -23,7 +23,7 @@ describe 'admin/skills/edit' do
 
   describe 'form fields' do
     it 'renders the delete button' do
-      expect(rendered).to match /glyphicon-trash/
+      expect(rendered).to match(/glyphicon-trash/)
     end
   end
 end

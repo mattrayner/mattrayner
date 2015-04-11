@@ -5,29 +5,39 @@ describe 'admin/case_studies/shared/_case_study_row' do
   let(:title)   { 'Give Cat' }
   let(:intro)   { 'A bit of intro text' }
   let(:body)    { 'A bit of body copy' }
-  let(:header_image) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'files', 'mega_fone.png')) }
 
-  let(:case_study) { create(:case_study, id: id, title: title, intro: intro, body: body, header_image: header_image ) }
+  image = File.join(Rails.root, 'spec', 'support', 'files', 'mega_fone.png')
+  let(:header_image) { Rack::Test::UploadedFile.new(image) }
+
+  let(:case_study) do
+    create(:case_study,
+           id: id,
+           title: title,
+           intro: intro,
+           body: body,
+           header_image: header_image)
+  end
 
   before do
-    render :partial => 'admin/case_studies/shared/case_study_row', :locals => { :case_study => case_study }
+    partial = 'admin/case_studies/shared/case_study_row'
+    render partial: partial, locals: { case_study: case_study }
   end
 
   it 'renders the header thumbnail image' do
-    expect(rendered).to match /\/uploads\/case_study\/header_image\/1\/thumb_mega_fone.png/
+    expect(rendered).to match(/thumb_mega_fone.png/)
   end
 
   it 'renders the case study title' do
-    expect(rendered).to match /#{case_study.title}/
+    expect(rendered).to match(/#{case_study.title}/)
   end
 
   it 'has a glyphicon delete button' do
-    expect(rendered).to match /glyphicon-trash/
-    expect(rendered).to match /Edit/
+    expect(rendered).to match(/glyphicon-trash/)
+    expect(rendered).to match(/Edit/)
   end
 
   it 'had a glyphicon edit button' do
-    expect(rendered).to match /glyphicon-pencil/
-    expect(rendered).to match /Delete/
+    expect(rendered).to match(/glyphicon-pencil/)
+    expect(rendered).to match(/Delete/)
   end
 end

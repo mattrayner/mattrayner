@@ -17,6 +17,11 @@ dependencies:
     - bundle install:
         timeout: 180
 
+## Add Rubocop to the test process
+test:
+  post:
+    - bundle exec rubocop
+
 ## Customize deployment commands
 deployment:
   development:

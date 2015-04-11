@@ -43,14 +43,18 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 
-  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
-    gem lib, :git => "git://github.com/rspec/#{lib}.git", :branch => 'master'
+  %w(core expectations mocks rails support).each do |lib|
+    gem "rspec-#{lib}",
+        git: "git://github.com/rspec/rspec-#{lib}.git",
+        branch: 'master'
   end
 
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
   gem 'pry'
   gem 'yard'
+
+  gem 'rubocop'
 
   gem 'dotenv-rails'
 end

@@ -2,12 +2,12 @@ require 'rails_helper'
 
 describe ApplicationHelper do
   describe '#markdown' do
-    let(:md) {
-<<-TEXT
+    let(:md) do
+      <<-TEXT
 #Title
 Paragraph
-TEXT
-}
+      TEXT
+    end
 
     subject { markdown(md) }
 

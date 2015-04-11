@@ -21,12 +21,16 @@ describe Admin::CurriculumVitaesController do
 
     describe '#create' do
       let(:note) { 'A pink CV' }
-      let(:file) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'files', 'test_pdf.pdf')) }
+      let(:file) do
+        Rack::Test::UploadedFile.new(
+          File.join(Rails.root, 'spec', 'support', 'files', 'test_pdf.pdf')
+        )
+      end
 
       let(:params) do
         {
-            note: note,
-            file: file
+          note: note,
+          file: file
         }
       end
 
@@ -41,7 +45,6 @@ describe Admin::CurriculumVitaesController do
           expect(cv.file.url).to include(file.original_filename)
         end
       end
-
     end
 
     describe '#index' do
@@ -51,7 +54,7 @@ describe Admin::CurriculumVitaesController do
         get :index
       end
 
-      it 'populates @curriculum_vitaes with the correct number of curriculum vitaes' do
+      it 'populates @curriculum_vitaes with the correct number of items' do
         cvs = controller.instance_variable_get(:@curriculum_vitaes)
         expect(cvs.size).to eq(5)
       end
@@ -86,16 +89,16 @@ describe Admin::CurriculumVitaesController do
           end
 
           it 'creates a @curriculum_vitae variable' do
-            instance_variable = controller.instance_variable_get(:@curriculum_vitae)
-            expect(instance_variable).not_to be_nil
+            var = controller.instance_variable_get(:@curriculum_vitae)
+            expect(var).not_to be_nil
           end
         end
 
-          context 'with an invalid id' do
+        context 'with an invalid id' do
           it 'raises an error' do
-            expect {
-              get :edit, id: 10000
-            }.to raise_error(ActionController::RoutingError)
+            expect do
+              get :edit, id: 1000
+            end.to raise_error(ActionController::RoutingError)
           end
         end
       end
@@ -106,8 +109,8 @@ describe Admin::CurriculumVitaesController do
 
         let(:params) do
           {
-              note: note,
-              file: file
+            note: note,
+            file: file
           }
         end
 
@@ -117,12 +120,13 @@ describe Admin::CurriculumVitaesController do
           end
 
           it 'renders the show template' do
-            expect(response).to redirect_to(edit_admin_curriculum_vitae_path(curriculum_vitae.id))
+            path = edit_admin_curriculum_vitae_path(curriculum_vitae.id)
+            expect(response).to redirect_to(path)
           end
 
           it 'populates @case_study_gallery_image correctly' do
-            instance_image = controller.instance_variable_get(:@curriculum_vitae)
-            expect(instance_image).to be_a(CurriculumVitae)
+            var = controller.instance_variable_get(:@curriculum_vitae)
+            expect(var).to be_a(CurriculumVitae)
           end
 
           it 'creates a success notice' do
@@ -132,9 +136,9 @@ describe Admin::CurriculumVitaesController do
 
         context 'with an invalid id' do
           it 'raises an error' do
-            expect {
+            expect do
               post :update, id: 1000, curriculum_vitae: params
-            }.to raise_error(ActionController::RoutingError)
+            end.to raise_error(ActionController::RoutingError)
           end
         end
       end
@@ -147,7 +151,7 @@ describe Admin::CurriculumVitaesController do
 
           delete :destroy, id: cv.id
 
-          expect(CurriculumVitae.count).to eq(cv_count-1)
+          expect(CurriculumVitae.count).to eq(cv_count - 1)
         end
       end
     end

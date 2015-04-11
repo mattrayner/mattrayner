@@ -4,7 +4,11 @@ describe 'admin/curriculum_vitaes/new' do
   let(:note) { nil }
   let(:file) { nil }
 
-  let(:curriculum_vitae) { build(:curriculum_vitae, note: note, file: file) }
+  let(:curriculum_vitae) do
+    build(:curriculum_vitae,
+          note: note,
+          file: file)
+  end
 
   before do
     assign(:curriculum_vitae, curriculum_vitae)
@@ -13,7 +17,7 @@ describe 'admin/curriculum_vitaes/new' do
   end
 
   it 'displays the page title' do
-    expect(rendered).to match /New CV/
+    expect(rendered).to match(/New CV/)
   end
 
   it 'renders the form fields' do
@@ -21,10 +25,10 @@ describe 'admin/curriculum_vitaes/new' do
   end
 
   it 'renders the back button' do
-    expect(rendered).to match />Back<\/a>/
+    expect(rendered).to match(%r{>Back<\/a>})
   end
 
   it 'does not render the delete button' do
-    expect(rendered).not_to match /glyphicon-trash/
+    expect(rendered).not_to match(/glyphicon-trash/)
   end
 end

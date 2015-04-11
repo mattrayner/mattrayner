@@ -20,4 +20,38 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  admin:
+    case_studies:
+      update:
+        success: 'Case study successfully updated!'
+      destroy:
+        success: 'Case study successfully deleted!'
+        error: 'Error when deleting case study...'
+    case_study_gallery_images:
+      update:
+        success: 'Gallery image was successfully updated.'
+        error: 'An error occurred updating this image.'
+    curriculum_vitaes:
+      update:
+        success: 'CV was successfully updated.'
+        error: 'An error occurred updating this CV.'
+      destroy:
+        success: 'CV successfully deleted!'
+        error: 'Error deleting CV...'
+    skills:
+      update:
+        success: 'Skill successfully updated!'
+      destroy:
+        success: 'Skill successfully deleted!'
+        error: 'Error when deleting skill...'
+  case_study:
+    title_validation: 'A good, descriptive title is required. It also adds to the tone of a case study.'
+    body_validation: 'Body copy is required for any case study.'
+  case_study_gallery_image:
+    image_validation: 'An image is required.'
+  curriculum_vitae:
+    file_validation: 'File is required.'
+  fit_bit_stats:
+    steps_floors_validation: 'Both floors and steps must be present.'
+  skill:
+    title_validation: 'Title is required.'

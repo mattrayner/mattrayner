@@ -1,5 +1,10 @@
+# @author Matthew Rayner
+# @since 0.1
 class CaseStudyGalleryImage < ActiveRecord::Base
-  validates :image, presence: { message: 'Image is required.' }
+  validates :image,
+            presence: {
+              message: I18n.t('.case_study_gallery_image.image_validation')
+            }
   validates_length_of :title, maximum: 255
 
   mount_uploader :image, GalleryImageUploader

@@ -55,9 +55,9 @@ describe Admin::CaseStudiesController do
 
       context 'with an invalid id' do
         it 'raises an error' do
-          expect {
+          expect do
             get :show, id: 1000
-          }.to raise_error(ActionController::RoutingError)
+          end.to raise_error(ActionController::RoutingError)
         end
       end
     end
@@ -69,9 +69,9 @@ describe Admin::CaseStudiesController do
 
       let(:params) do
         {
-            title: title,
-            intro: intro,
-            body:  body
+          title: title,
+          intro: intro,
+          body:  body
         }
       end
 
@@ -81,7 +81,7 @@ describe Admin::CaseStudiesController do
 
           post :create, case_study: params
 
-          expect(CaseStudy.count).to eq(count+1)
+          expect(CaseStudy.count).to eq(count + 1)
         end
 
         it 'saves the given details to a new CaseStudy' do
@@ -91,7 +91,7 @@ describe Admin::CaseStudiesController do
 
           expect(case_study.title).to eq(title)
           expect(case_study.intro).to eq(intro)
-          expect(case_study.body).to  eq(body)
+          expect(case_study.body).to eq(body)
         end
 
         it 'redirects the user to the case study page' do
@@ -142,9 +142,9 @@ describe Admin::CaseStudiesController do
 
       context 'with an invalid id' do
         it 'raises an error' do
-          expect {
+          expect do
             get :show, id: 1000
-          }.to raise_error(ActionController::RoutingError)
+          end.to raise_error(ActionController::RoutingError)
         end
       end
     end
@@ -153,8 +153,12 @@ describe Admin::CaseStudiesController do
       let(:case_study)        { create(:case_study) }
       let(:gallery_images) do
         [
-            create(:case_study_gallery_image, title: 'First image', case_study: case_study),
-            create(:case_study_gallery_image, title: 'Second image', case_study: case_study)
+          create(:case_study_gallery_image,
+                 title: 'First image',
+                 case_study: case_study),
+          create(:case_study_gallery_image,
+                 title: 'Second image',
+                 case_study: case_study)
         ]
       end
 
@@ -163,17 +167,17 @@ describe Admin::CaseStudiesController do
       let(:body)  { 'A body' }
       let(:gallery_image_attributes) do
         {
-            '0'=>{ id: gallery_images.first.id, remove_image: '1' },
-            '1'=>{ id: gallery_images.last.id, remove_image: '0' }
+          '0' => { id: gallery_images.first.id, remove_image: '1' },
+          '1' => { id: gallery_images.last.id, remove_image: '0' }
         }
       end
 
       let(:params) do
         {
-            title:                     title,
-            intro:                     intro,
-            body:                      body,
-            gallery_images_attributes: gallery_image_attributes
+          title:                     title,
+          intro:                     intro,
+          body:                      body,
+          gallery_images_attributes: gallery_image_attributes
         }
       end
 
@@ -199,9 +203,9 @@ describe Admin::CaseStudiesController do
 
       context 'with an invalid id' do
         it 'raises an error' do
-          expect {
+          expect do
             post :update, id: 1000, case_study: params
-          }.to raise_error(ActionController::RoutingError)
+          end.to raise_error(ActionController::RoutingError)
         end
       end
     end
@@ -221,15 +225,15 @@ describe Admin::CaseStudiesController do
         it 'successfully deletes a CaseStudy' do
           count = CaseStudy.count
           delete :destroy, id: 1
-          expect(CaseStudy.count).to eq(count-1)
+          expect(CaseStudy.count).to eq(count - 1)
         end
       end
 
       context 'with an invalid id' do
         it 'raises an error' do
-          expect {
+          expect do
             delete :destroy, id: 1000
-          }.to raise_error(ActionController::RoutingError)
+          end.to raise_error(ActionController::RoutingError)
         end
       end
     end

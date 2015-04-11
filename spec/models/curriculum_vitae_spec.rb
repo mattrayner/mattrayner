@@ -10,7 +10,8 @@ RSpec.describe CurriculumVitae, type: :model do
       subject.file = nil
       expect(subject.save).to be_falsey
 
-      subject.file = Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'files', 'test_pdf.pdf'))
+      file = File.join(Rails.root, 'spec', 'support', 'files', 'test_pdf.pdf')
+      subject.file = Rack::Test::UploadedFile.new(file)
       expect(subject.save).to be_truthy
     end
   end

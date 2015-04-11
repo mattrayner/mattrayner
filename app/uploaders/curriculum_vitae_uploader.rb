@@ -1,4 +1,5 @@
-# CurriculumVitae Uploader class, allowing the user to upload a single PDF file to be made available on the front-end
+# CurriculumVitae Uploader class, allowing the user to upload a single PDF file
+# to be made available on the front-end
 #
 # @author Matthew Rayner
 # @since 0.1

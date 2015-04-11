@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 describe 'admin/shared/_navigation' do
-  let(:user) { double(User, gravatar_url: 'https://secure.gravatar.com/avatar/654c203f4d1c78392370aeb8325bbb58.png?r=PG&amp;s=18') }
+  let(:url) do
+    'https://secure.gravatar.com/avatar/654c203f4d1c78392370aeb8325bbb58.png'
+  end
+
+  let(:user) { double(User, gravatar_url: url) }
 
   before do
     allow(view).to receive(:current_user).and_return(user)
@@ -10,37 +14,37 @@ describe 'admin/shared/_navigation' do
   end
 
   it 'renders the home link' do
-    expect(rendered).to match /Matt Rayner Admin/
-    expect(rendered).to match /glyphicon glyphicon-home/
+    expect(rendered).to match(/Matt Rayner Admin/)
+    expect(rendered).to match(/glyphicon glyphicon-home/)
   end
 
   it 'renders live site link' do
-    expect(rendered).to match /Live Site/
+    expect(rendered).to match(/Live Site/)
   end
 
   it 'renders case studies link' do
-    expect(rendered).to match /Case Studies/
+    expect(rendered).to match(/Case Studies/)
   end
 
   it 'renders skills link' do
-    expect(rendered).to match /Skills/
+    expect(rendered).to match(/Skills/)
   end
 
   it 'renders cvs link' do
-    expect(rendered).to match /CVs/
+    expect(rendered).to match(/CVs/)
   end
 
   context 'user dropdown' do
     it 'renders the user gravatar' do
-      expect(rendered).to match /https:\/\/secure.gravatar.com\/avatar\/654c203f4d1c78392370aeb8325bbb58.png/
+      expect(rendered).to match(/#{url}/)
     end
 
     it 'renders edit profile link' do
-      expect(rendered).to match /Edit Profile/
+      expect(rendered).to match(/Edit Profile/)
     end
 
     it 'renders log out link' do
-      expect(rendered).to match /Log Out/
+      expect(rendered).to match(/Log Out/)
     end
   end
 end

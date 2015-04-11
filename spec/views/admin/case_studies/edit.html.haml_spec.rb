@@ -11,18 +11,19 @@ describe 'admin/case_studies/edit' do
   end
 
   it 'renders the page title' do
-    expect(rendered).to match /Edit\n'#{case_study.title}'/
+    expect(rendered).to match(/Edit\n'#{case_study.title}'/)
   end
 
   it 'renders the case study form' do
-    expect(view).to render_template(partial: 'admin/case_studies/shared/_form_fields')
+    partial = 'admin/case_studies/shared/_form_fields'
+    expect(view).to render_template(partial: partial)
   end
 
   context 'with a long title' do
     let(:title)   { 'Give Cat - The Bookmarklet you never knew you needed!' }
 
     it 'concatenates after X number of characters' do
-      expect(rendered).to match /Edit\n'Give Ca...'/
+      expect(rendered).to match(/Edit\n'Give Ca...'/)
     end
   end
 
@@ -32,25 +33,32 @@ describe 'admin/case_studies/edit' do
       let(:intro)        { 'A intro!' }
       let(:body)         { 'Some body text' }
       let(:header_image) { nil }
-      let(:case_study)   { create(:case_study, title: title, intro: intro, body: body, header_image: header_image) }
+      let(:case_study)   do
+        create(:case_study,
+               title: title,
+               intro: intro,
+               body: body,
+               header_image: header_image)
+      end
 
       it 'renders the title' do
-        expect(rendered).to match /#{title}/
+        expect(rendered).to match(/#{title}/)
       end
 
       it 'renders the intro' do
-        expect(rendered).to match /#{intro}/
+        expect(rendered).to match(/#{intro}/)
       end
 
       it 'renders the body' do
-        expect(rendered).to match /#{body}/
+        expect(rendered).to match(/#{body}/)
       end
 
       context 'with a header image' do
-        let(:header_image) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'files', 'test_cat.png')) }
+        file = File.join(Rails.root, 'spec', 'support', 'files', 'test_cat.png')
+        let(:header_image) { Rack::Test::UploadedFile.new(file) }
 
         it 'renders the header image' do
-          expect(rendered).to match /test_cat.png/
+          expect(rendered).to match(/test_cat.png/)
         end
       end
 
@@ -61,13 +69,13 @@ describe 'admin/case_studies/edit' do
           expect(case_study.gallery_images.empty?).to be_falsey
 
           case_study.gallery_images.each do |image|
-            expect(rendered).to match /id='gallery-image-#{image.id}'/
+            expect(rendered).to match(/id='gallery-image-#{image.id}'/)
           end
         end
       end
 
       it 'renders the delete button' do
-        expect(rendered).to match /glyphicon-trash/
+        expect(rendered).to match(/glyphicon-trash/)
       end
     end
   end

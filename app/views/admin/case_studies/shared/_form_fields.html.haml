@@ -11,23 +11,11 @@
         Remove header image
     = form.input :header_image, input_html: { accept: '.jpg,.jpeg,.gif,.png' }
 
-    .form-group
-      .col-sm-6.pull-left
-        = form.label :intro
-        %abbr{ class: 'glyphicon glyphicon-sunglasses', title: 'MarkDown enabled' }
-      .col-sm-6.pull-right.text-right
-        = link_to '', 'http://kramdown.gettalong.org/quickref.html', class: 'glyphicon glyphicon-question-sign'
-      = form.text_area :intro, placeholder: 'Lorem Ipsum Dolor Sit Amit... (max-length 300)', class: 'form-control', maxsize: 300
+    = form.input :intro, placeholder: 'Lorem Ipsum Dolor Sit Amit... (max-length 300)', class: 'form-control', html: { maxsize: 300 }
 
 .row-fluid
   .col-md-8
-    .form-group
-      .col-sm-6.pull-left
-        = form.label :body
-        %abbr{ class: 'glyphicon glyphicon-sunglasses', title: 'MarkDown enabled' }
-      .col-sm-6.pull-right.text-right
-        = link_to '', 'http://kramdown.gettalong.org/quickref.html', class: 'glyphicon glyphicon-question-sign'
-      = form.text_area :body, placeholder: 'Lorem Ipsum Dolor Sit Amit...', class: 'form-control', rows: 14
+    = form.input :body, placeholder: 'Lorem Ipsum Dolor Sit Amit...', class: 'form-control', input_html: { rows: 14 }
   .col-md-4
     .well
       %h2 Note:
@@ -70,9 +58,7 @@
           - if @case_study.gallery_images.empty?
             %tr
               %td{ colspan: 2 } No gallery images at the moment. Add one below.
-      .col-sm-12
-        = form.label :image, 'Add Images'
-      .clearfix
+      = form.label :image, 'Add Images'
       = form.file_field :image, :multiple => true, name: 'case_study_gallery_images[images][]', accept: '.jpg,.jpeg,.gif,.png'
 .row-fluid
   .col-xs-6.text-left

@@ -14,7 +14,7 @@ describe 'admin/skills/new' do
   end
 
   it 'renders the page title' do
-    expect(rendered).to match /New Skill/
+    expect(rendered).to match(/New Skill/)
   end
 
   it 'renders the form fields' do
@@ -24,7 +24,7 @@ describe 'admin/skills/new' do
   describe 'form fields' do
     context 'with a new record' do
       it 'does not render the delete button' do
-        expect(rendered).not_to match /glyphicon-trash/
+        expect(rendered).not_to match(/glyphicon-trash/)
       end
     end
   end

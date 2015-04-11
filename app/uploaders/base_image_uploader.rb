@@ -1,4 +1,5 @@
-# Base Image Uploader class, containing a number of attributes shared among the uploaders within the app.
+# Base Image Uploader class, containing a number of attributes shared among the
+# uploaders within the app.
 # Contains a number of defaults including, but not limited to:
 #   Storage location
 #   Default images
@@ -20,7 +21,7 @@ class BaseImageUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+    '/images/fallback/' + [version_name, 'default.png'].compact.join('_')
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

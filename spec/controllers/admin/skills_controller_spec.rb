@@ -41,8 +41,8 @@ RSpec.describe Admin::SkillsController, type: :controller do
 
       let(:params) do
         {
-            title: title,
-            level: level
+          title: title,
+          level: level
         }
       end
 
@@ -52,7 +52,7 @@ RSpec.describe Admin::SkillsController, type: :controller do
 
           post :create, skill: params
 
-          expect(Skill.count).to eq(count+1)
+          expect(Skill.count).to eq(count + 1)
         end
 
         it 'saves the given details to a new Skill' do
@@ -121,9 +121,9 @@ RSpec.describe Admin::SkillsController, type: :controller do
       end
 
       it 'raises an error if the id is invalid' do
-        expect {
+        expect do
           delete :edit, id: 1000
-        }.to raise_error(ActionController::RoutingError)
+        end.to raise_error(ActionController::RoutingError)
       end
     end
 
@@ -178,7 +178,7 @@ RSpec.describe Admin::SkillsController, type: :controller do
 
         delete :destroy, id: @skill.id
 
-        expect(Skill.count).to eq(skill_count-1)
+        expect(Skill.count).to eq(skill_count - 1)
       end
     end
   end

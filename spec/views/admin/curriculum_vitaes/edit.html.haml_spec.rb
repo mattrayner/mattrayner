@@ -2,9 +2,15 @@ require 'rails_helper'
 
 describe 'admin/curriculum_vitaes/edit' do
   let(:note) { 'A note about the epicness of this whole epic epicness' }
-  let(:file) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'files', 'test_pdf.pdf')) }
 
-  let(:curriculum_vitae) { create(:curriculum_vitae, note: note, file: file) }
+  file = File.join(Rails.root, 'spec', 'support', 'files', 'test_pdf.pdf')
+  let(:uploaded_file) { Rack::Test::UploadedFile.new(file) }
+
+  let(:curriculum_vitae) do
+    create(:curriculum_vitae,
+           note: note,
+           file: uploaded_file)
+  end
 
   before do
     assign(:curriculum_vitae, curriculum_vitae)
@@ -13,7 +19,7 @@ describe 'admin/curriculum_vitaes/edit' do
   end
 
   it 'displays the page title' do
-    expect(rendered).to match /Edit CV/
+    expect(rendered).to match(/Edit CV/)
   end
 
   it 'renders the form fields' do
@@ -21,10 +27,10 @@ describe 'admin/curriculum_vitaes/edit' do
   end
 
   it 'renders the back button' do
-    expect(rendered).to match />Back<\/a>/
+    expect(rendered).to match(%r{>Back<\/a>})
   end
 
   it 'renders the delete button' do
-    expect(rendered).to match /glyphicon-trash/
+    expect(rendered).to match(/glyphicon-trash/)
   end
 end

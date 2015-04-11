@@ -10,7 +10,9 @@ RSpec.describe CaseStudyGalleryImage, type: :model do
       subject.image = nil
       expect(subject.save).to be_falsey
 
-      subject.image = Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'files', 'test_cat.png'))
+      file = File.join(Rails.root, 'spec', 'support', 'files', 'test_cat.png')
+      subject.image = Rack::Test::UploadedFile.new(file)
+
       expect(subject.save).to be_truthy
     end
   end
