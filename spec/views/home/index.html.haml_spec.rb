@@ -5,11 +5,9 @@ describe 'home/index.html.haml' do
     render
   end
 
-  it 'Displays a coming soon title' do
-    expect(rendered).to match(%r{<h1>Coming Soon!<\/h1>})
-  end
-
-  it 'Displays the coming soon text' do
-    expect(rendered).to match(/<p>Thanks for your interest! I'm busy/)
+  describe 'breadcrumbs' do
+    it 'displays breadcrumbs at the top of the page' do
+      expect(rendered).to match(/Matt Rayner/)
+    end
   end
 end

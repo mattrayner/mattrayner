@@ -55,6 +55,7 @@ group :development, :test do
   gem 'yard'
 
   gem 'rubocop'
+  gem 'inch'
 
   gem 'dotenv-rails'
 end

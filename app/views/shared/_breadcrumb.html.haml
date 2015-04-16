@@ -1,0 +1,6 @@
+- itemprop = root ? false : 'child'
+%div.crumb{ itemprop: itemprop, itemscope: true, itemtype: 'http://data-vocabulary.org/Breadcrumb'  }
+  %a{ href: crumb[:url], itemprop: 'url' }
+    %span{ itemprop: 'title' }
+      = crumb[:title]
+  = children

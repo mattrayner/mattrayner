@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Matt Rayner</title>
+  <title><%= yield(:title) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -13,14 +13,8 @@
   <![endif]-->
 </head>
 <body class="<%= params[:controller] %>" id="<%= "#{params[:controller]}-#{params[:action]}" %>">
+  <%= render 'shared/breadcrumbs' %>
 
-<% if notice %>
-  <p class="alert alert-info"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-<%= yield %>
-
+  <%= yield %>
 </body>
 </html>
