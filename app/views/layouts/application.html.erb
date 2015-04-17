@@ -14,6 +14,7 @@
 </head>
 <body class="<%= params[:controller] %>" id="<%= "#{params[:controller]}-#{params[:action]}" %>">
   <%= render 'shared/breadcrumbs' %>
+  <%= render 'shared/navigation' %>
 
   <%= yield %>
 </body>

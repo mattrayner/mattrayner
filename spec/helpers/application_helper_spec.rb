@@ -43,7 +43,7 @@ Paragraph
         s = "<div class='crumb' itemscope itemtype='http://data-vocabulary.org/"
         expect(subject).to include(s)
 
-        s = "<a href='/' itemprop='url'>\n"
+        s = "<a href='http://test.host/' itemprop='url'>\n"
         expect(subject).to include(s)
 
         s = "<span itemprop='title'>\nMatt Rayner\n</span>"

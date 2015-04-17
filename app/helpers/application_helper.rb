@@ -40,9 +40,18 @@ module ApplicationHelper
   def build_breadcrumbs(*crumbs)
     crumbs = [] if crumbs == [nil]
 
-    full_crumbs = ([{ title: 'Matt Rayner', url: root_path }] + crumbs).flatten
+    full_crumbs = ([{ title: 'Matt Rayner', url: root_url }] + crumbs).flatten
 
     build_breadcrumb(full_crumbs, root: true)
+  end
+
+  # What should the HTML class value be for the 'Home' navigation element?
+  #
+  # @author Matthew Rayner
+  #
+  # @return [String] A string or nil
+  def home_nav_class
+    return 'active' if home_controller?
   end
 
   private
@@ -72,5 +81,14 @@ module ApplicationHelper
              children: child_crumb,
              root: root
            })
+  end
+
+  # Are we currently within the home controller?
+  #
+  # @author Matthew Rayner
+  #
+  # @return [Boolean] true or false
+  def home_controller?
+    params[:controller] == 'home'
   end
 end
