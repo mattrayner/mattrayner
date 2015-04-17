@@ -10,14 +10,14 @@ describe 'shared/_navigation.html.haml' do
   end
 
   it 'renders the website logo' do
-    expect(rendered).to match /<a class="navbar-brand mattrayner-logo ir"/
+    expect(rendered).to match(/<a class="navbar-brand mattrayner-logo ir"/)
   end
 
   it 'renders the Home link' do
-    expect(rendered).to match /Home/
+    expect(rendered).to match(/Home/)
   end
 
   it 'renders the My CV link' do
-    expect(rendered).to match /Get My CV/
+    expect(rendered).to match(/Get My CV/)
   end
 end
