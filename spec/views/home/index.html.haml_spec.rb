@@ -5,11 +5,23 @@ describe 'home/index.html.haml' do
     render
   end
 
-  it 'Displays a coming soon title' do
-    expect(rendered).to match(%r{<h1>Coming Soon!<\/h1>})
+  describe 'breadcrumbs' do
+    it 'displays breadcrumbs at the top of the page' do
+      expect(rendered).to match(/Matt Rayner/)
+    end
   end
 
-  it 'Displays the coming soon text' do
-    expect(rendered).to match(/<p>Thanks for your interest! I'm busy/)
+  describe 'header' do
+    it 'has the title' do
+      expect(rendered).to match(%r{<span class='sr-only'>\n<h1>Matt Rayner</h1})
+    end
+
+    it 'has the tagline' do
+      expect(rendered).to match(/\n<p class='lead'>Full stack Rubyist in Londo/)
+    end
+
+    it 'had a divider' do
+      expect(rendered).to match(/class='home-divider'/)
+    end
   end
 end

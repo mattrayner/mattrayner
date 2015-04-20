@@ -22,4 +22,73 @@ module ApplicationHelper
     source = sanitize(source, tags: [])
     Kramdown::Document.new(source).to_html.html_safe
   end
+
+  # Take an array of hashes, and build a string of HTML representing breadcrumbs
+  #
+  # @author Matthew Rayner
+  #
+  # @param [Array] An array of hashes representing steps in a breadcumb trail.
+  #   #=> [
+  #         {title: 'A Page', url: '/a/path/'},
+  #         {title: 'Another Page', url: '/yet/another/path/'}
+  #       ]
+  #
+  # @example Given a single element call, generate a two level breadcrumb
+  #   build_breadcrumbs([{title: 'A title', url: '/a/path/'}]) #=> "<div ite..."
+  #
+  # @return [String] A html_safe string representing the breadcrumb code
+  def build_breadcrumbs(*crumbs)
+    crumbs = [] if crumbs == [nil]
+
+    full_crumbs = ([{ title: 'Matt Rayner', url: root_url }] + crumbs).flatten
+
+    build_breadcrumb(full_crumbs, root: true)
+  end
+
+  # What should the HTML class value be for the 'Home' navigation element?
+  #
+  # @author Matthew Rayner
+  #
+  # @return [String] A string or nil
+  def home_nav_class
+    return 'active' if home_controller?
+  end
+
+  private
+
+  # Take an array of crumbs and create a tree of HTML
+  #
+  # Will take an array and recursively generate nested HTML from the partial:
+  #   shared/breadcrumb
+  #
+  # @author Matthew Rayner
+  #
+  # @param [Array] An array of hashes representing steps in a breadcrumb trail.
+  #   #=> [
+  #         {title: 'A Page', url: '/a/path/'},
+  #         {title: 'Another Page', url: '/yet/another/path/'}
+  #       ]
+  #
+  # @return [String] A string containing HTML representing a breadcrumb.
+  def build_breadcrumb(crumbs, root: false)
+    crumb = crumbs.shift
+
+    child_crumb = crumbs.empty? ? '' : build_breadcrumb(crumbs)
+
+    render(partial: 'shared/breadcrumb',
+           locals: {
+             crumb: crumb,
+             children: child_crumb,
+             root: root
+           })
+  end
+
+  # Are we currently within the home controller?
+  #
+  # @author Matthew Rayner
+  #
+  # @return [Boolean] true or false
+  def home_controller?
+    params[:controller] == 'home'
+  end
 end

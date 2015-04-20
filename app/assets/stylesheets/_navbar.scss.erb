@@ -1,0 +1,86 @@
+.navbar {
+  height:        4em;
+  margin-bottom: 0;
+
+  font-weight:   400;
+
+  .container {
+    .navbar-header {
+      margin: 0;
+      height: 4em;
+
+      .navbar-brand {
+        margin-top:  0.65em;
+        margin-left: 0;
+
+        &.mattrayner-logo {
+          background-image:    url(<%= asset_path('mattrayner-logo.png') %>);
+          background-image:    url(<%= asset_path('mattrayner-logo.svg') %>), none;
+          background-repeat:   no-repeat;
+          background-position: 50% 50%;
+
+          width:               221px;
+          height:              37px;
+
+          padding:             0;
+        }
+      }
+
+      .navbar-toggle {
+        margin: 11px 0;
+      }
+    }
+
+    ul.nav {
+      li {
+        a {
+          color:     #fff;
+          padding:   18px 0 18px;
+          font-size: 16px;
+        }
+
+        &.active {
+          a {
+            background:  none;
+            font-weight: 400;
+          }
+        }
+      }
+
+      &.navbar-pink {
+        a {
+          color: #E5007D;
+        }
+      }
+
+      &.site-nav {
+        margin-left: 25px;
+      }
+    }
+  }
+
+  &.navbar-fixed-top {
+    top: 2em;
+  }
+
+  &.navbar-translucent {
+    background-color: $navigation-bg;
+    border:           none;
+  }
+}
+
+@media(max-width: 768px) {
+  .navbar {
+    .container {
+      .navbar-collapse {
+        background-color: $navigation-bg;
+
+        ul.nav {
+          &.navbar-nav {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

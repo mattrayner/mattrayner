@@ -34,6 +34,8 @@ set :pty, true
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+set :passenger_restart_with_sudo, true
+
 namespace :deploy do
 
   after :restart, :clear_cache do
@@ -47,5 +49,6 @@ namespace :deploy do
 
 end
 
+before 'bundler:install', 'bundler:build'
 after 'deploy', 'deploy:migrate'
 after 'deploy:migrate', 'deploy:restart'

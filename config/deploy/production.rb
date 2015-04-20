@@ -6,7 +6,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
-server '178.62.81.134', user: 'deployer', roles: %w{web}
+server '46.101.9.5', user: 'deployer', roles: %w{web}
 
 
 # role-based syntax
@@ -17,9 +17,9 @@ server '178.62.81.134', user: 'deployer', roles: %w{web}
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, %w{deployer@178.62.81.134}
-role :web, %w{deployer@178.62.81.134}
-role :db,  %w{deployer@178.62.81.134}
+role :app, %w{deployer@46.101.9.5}
+role :web, %w{deployer@46.101.9.5}
+role :db,  %w{deployer@46.101.9.5}
 
 
 # Configuration
@@ -30,7 +30,7 @@ role :db,  %w{deployer@178.62.81.134}
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
-set :branch, 'develop'
+set :branch, 'master'
 
 
 # Custom SSH Options
@@ -43,4 +43,4 @@ set :branch, 'develop'
 # --------------
 set :ssh_options, {
                     forward_agent: true
-                  }
+                }

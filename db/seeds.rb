@@ -78,6 +78,22 @@ def create_fit_bit_stat(steps:, floors:, age:)
   end
 end
 
+def create_cv
+  if CurriculumVitae.count.zero?
+    puts "\t\t\t- Creating..."
+
+    cv = CurriculumVitae.new(note: 'Example CV')
+
+    File.open('spec/support/files/pink_pdf.pdf') do |f|
+      cv.file = f
+    end
+
+    cv.save
+  else
+    puts "\t\t\t- Already Exists... Skipping"
+  end
+end
+
 puts "\t- Seeding users"
 create_user(email: 'admin@example.com', password: 'mj$jCh@%mvhhNbpn!IXKZPWD66Fs0LOkfkuw^VOtwU@x&@57KTAmqjh*w2ZGa%FJI8jl0lws*r2rcsE2&6Jq$k5jEPBNd^M$VB6S')
 
@@ -103,3 +119,6 @@ create_fit_bit_stat(steps: 123, floors: 1, age: 60.minutes.ago)
 create_fit_bit_stat(steps: 456, floors: 2, age: 45.minutes.ago)
 create_fit_bit_stat(steps: 789, floors: 3, age: 30.minutes.ago)
 create_fit_bit_stat(steps: 1011, floors: 4, age: 15.minutes.ago)
+
+puts "\t- Seed CVs..."
+create_cv

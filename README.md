@@ -7,26 +7,61 @@ It includes continuous integration and delivery using [Circle CI](https://circle
 ## Installation and Setup
 **NOTE:** This application has been developed with Ruby version [2.2.1](https://www.ruby-lang.org/en/news/2015/03/03/ruby-2-2-1-released/) and Rails version [4.2](http://weblog.rubyonrails.org/2014/12/19/Rails-4-2-final/). Please ensure these are installed before installing and setting up the application.
 
-Clone the project to your local machine and navigate into it:
+### Clone the GIT repo
 
 ```bash
 $ git clone git@github.com:mattrayner/mattrayner.git
 $ cd mattrayner
 ```
 
-Install ImageMagick for image resizing
+### Install NodeJS
+
+#### OSX
+
+```bash
+$ brew install node
+```
+
+#### CentOS
+
+```bash
+$ curl -sL https://rpm.nodesource.com/setup | bash -
+$ yum install -y nodejs
+```
+
+### Install ImageMagick for image resizing
+
+#### OSX
 
 ```bash
 $ brew install imagemagick
 ```
 
-Copy environment template
+#### CentOS
+
+```bash
+$ yum install ImageMagick
+```
+
+### Set up the environment
+
+#### OSX (development)
 
 ```bash
 $ cp .env.sample .env
 ```
 
-**Note:** To update external API data, please ensure you fill in the .env file with applicable data.
+#### CentOS (production)
+
+Set up environment variables for all of the values in .env.sample **and** SECRET_KEY_BASE. If running passenger as root, use
+
+```bash
+$ nano /etc/profile
+```
+
+and add export commands to the bottom of the file.
+
+**Note:** To update external API data in development, please ensure you fill in the .env file with applicable data.
 
 Install all of the GEM dependencies with [bundler](http://bundler.io/):
 
@@ -34,11 +69,33 @@ Install all of the GEM dependencies with [bundler](http://bundler.io/):
 $ bundle install
 ```
 
-Set up the local database:
+### Set up the database
+
+#### OSX
+
+For development, set up the database user and databases
+
+```bash
+$ brew update
+$ brew install mysql
+```
+
+#### CentOS
+
+```bash
+wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+sudo yum localinstall mysql-community-release-el7-*.noarch.rpm
+sudo yum install mysql-community-server
+sudo chkconfig mysqld on
+chkconfig --list mysqld
+sudo yum install mysql-devel
+```
 
 ```bash
 $ bundle exec rake db:create db:setup db:seed
 ```
+
+### Final Development Steps
 
 Ensure that the test suite successfully runs on your local machine:
 
@@ -55,10 +112,10 @@ $ bundle exec rails s
 You should now be able to see a local version of the project at http://localhost:3000. You can access the admin panel at http://localhost:3000/admin
 
 ## Demo
-This application can be found at http://mattrayner.co.uk running the master branch bose base.
+This application can be found at http://mattrayner.uk running the master branch code base.
 
-You can see a **DEVELOPMENT** version of this project at http://dev.mattrayner.co.uk/ 
-**THIS SERVICE MAY NOT BE AVAILABLE 100% OF THE TIME**
+You can see a **DEVELOPMENT** version of this project at http://dev.mattrayner.uk/
+**THE DEVELOPMENT SERVICE MAY NOT BE AVAILABLE 100% OF THE TIME**
 
 ## Contributing
 If you wish to submit a bug fix, you can create a pull request and it will be merged pending a code review.

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/rspec/rspec-core.git
-  revision: ae69d80ce450a139ec0b75b0eeec48d81ad4befb
+  revision: 35106b316e589d12b1661e3478d2b8210ad06693
   branch: master
   specs:
     rspec-core (3.3.0.pre)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-expectations.git
-  revision: 4081467f6bfc2e5c0d03b919a9b204c1af4e4b1a
+  revision: b574ab2ec3343c9c477d44b0f7ff7dead27223e1
   branch: master
   specs:
     rspec-expectations (3.3.0.pre)
@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-mocks.git
-  revision: b61016983d2ac53088ebee601c653f9ff5a3dab7
+  revision: 9ee3e3adb529113bf1cc75cc4424d014f880dc47
   branch: master
   specs:
     rspec-mocks (3.3.0.pre)
@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-rails.git
-  revision: 6d1b893b936e6651fbb96771fefdefff8a7627fe
+  revision: a09a6231ceecefa177ec08b27c3066d5947e5899
   branch: master
   specs:
     rspec-rails (3.3.0.pre)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-support.git
-  revision: 5cf5ab0af1cf5e37735051d9599ce6f839855dfc
+  revision: b7ebc885409fb10d17edfb086ab68b72fe3dcbe1
   branch: master
   specs:
     rspec-support (3.3.0.pre)
@@ -87,7 +87,7 @@ GEM
     ast (2.0.0)
     astrolabe (1.3.0)
       parser (>= 2.2.0.pre.3, < 3.0)
-    autoprefixer-rails (5.1.7)
+    autoprefixer-rails (5.1.10)
       execjs
       json
     bcrypt (3.1.10)
@@ -97,14 +97,12 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.3.3)
+    bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
     builder (3.2.2)
-    byebug (3.5.1)
-      columnize (~> 0.8)
-      debugger-linecache (~> 1.2)
-      slop (~> 3.6)
+    byebug (4.0.5)
+      columnize (= 0.9.0)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -114,7 +112,7 @@ GEM
       sshkit (~> 1.2)
     capistrano-passenger (0.0.2)
       capistrano (~> 3.0)
-    capistrano-rails (1.1.2)
+    capistrano-rails (1.1.3)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     carrierwave (0.10.0)
@@ -128,15 +126,14 @@ GEM
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
-    coffee-script (2.3.0)
+    coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.9.1)
-    colorize (0.7.5)
+    coffee-script-source (1.9.1.1)
+    colorize (0.7.7)
     columnize (0.9.0)
-    database_cleaner (1.4.0)
+    database_cleaner (1.4.1)
     debug_inspector (0.0.2)
-    debugger-linecache (1.2.0)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -150,7 +147,7 @@ GEM
     dotenv-rails (2.0.1)
       dotenv (= 2.0.1)
     erubis (2.7.0)
-    execjs (2.4.0)
+    execjs (2.5.2)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -158,13 +155,17 @@ GEM
       railties (>= 3.0.0)
     fitgem (0.10.0)
       oauth
-    globalid (0.3.3)
+    globalid (0.3.5)
       activesupport (>= 4.1.0)
     gravtastic (3.2.6)
     haml (4.0.6)
       tilt
-    hike (1.2.3)
     i18n (0.7.0)
+    inch (0.5.10)
+      pry
+      sparkr (>= 0.2.0)
+      term-ansicolor
+      yard (~> 0.8.7.5)
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -177,19 +178,19 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.4.3)
-    mini_magick (4.2.1)
+    mini_magick (4.2.3)
     mini_portile (0.6.2)
-    minitest (5.5.1)
-    multi_json (1.11.0)
+    minitest (5.6.0)
+    mysql2 (0.3.18)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
-    newrelic_rpm (3.10.0.279)
+    newrelic_rpm (3.11.2.286)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     oauth (0.4.7)
     orm_adapter (0.5.0)
-    parser (2.2.0.3)
+    parser (2.2.2.1)
       ast (>= 1.1, < 3.0)
     powerpack (0.1.0)
     pry (0.10.1)
@@ -212,11 +213,11 @@ GEM
       sprockets-rails
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.5)
+    rails-dom-testing (1.0.6)
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
-    rails-html-sanitizer (1.0.1)
+    rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
     railties (4.2.0)
       actionpack (= 4.2.0)
@@ -234,10 +235,9 @@ GEM
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.4)
     ruby-progressbar (1.7.5)
-    rufus-scheduler (3.0.9)
-      tzinfo
+    rufus-scheduler (3.1.1)
     sass (3.4.13)
-    sass-rails (5.0.1)
+    sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
@@ -246,30 +246,30 @@ GEM
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
-    simplecov (0.9.2)
+    simplecov (0.10.0)
       docile (~> 1.1.0)
-      multi_json (~> 1.0)
-      simplecov-html (~> 0.9.0)
-    simplecov-html (0.9.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     slop (3.6.0)
-    spring (1.3.3)
-    sprockets (2.12.3)
-      hike (~> 1.2)
-      multi_json (~> 1.0)
+    sparkr (0.4.1)
+    spring (1.3.4)
+    sprockets (3.0.1)
       rack (~> 1.0)
-      tilt (~> 1.1, != 1.3.0)
     sprockets-rails (2.2.4)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sqlite3 (1.3.10)
     sshkit (1.7.1)
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    term-ansicolor (1.3.0)
+      tins (~> 1.0)
     thor (0.19.1)
-    thread_safe (0.3.4)
+    thread_safe (0.3.5)
     tilt (1.4.1)
+    tins (1.3.5)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -279,7 +279,7 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
-    web-console (2.1.1)
+    web-console (2.1.2)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
@@ -296,7 +296,7 @@ DEPENDENCIES
   byebug
   capistrano
   capistrano-bundler
-  capistrano-passenger
+  capistrano-passenger (= 0.0.2)
   capistrano-rails
   carrierwave
   codeclimate-test-reporter
@@ -308,9 +308,11 @@ DEPENDENCIES
   fitgem
   gravtastic
   haml
+  inch
   jquery-rails
   kramdown
   mini_magick
+  mysql2
   newrelic_rpm
   pry
   rails (= 4.2.0)
@@ -324,7 +326,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   simple_form
   spring
-  sqlite3
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)

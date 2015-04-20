@@ -1,0 +1,28 @@
+.breadcrumbs {
+  height: 2em;
+  background-color: $breadcrumb-bg;
+
+  .container {
+    padding-top: 0.428em;
+    line-height: 1;
+
+    .crumb {
+      display: inline;
+
+      .crumb {
+        background-image: url(<%= asset_path('breadcrumb-seperator.png') %>);
+        background-image: url(<%= asset_path('breadcrumb-seperator.svg') %>), none;
+
+        background-repeat: no-repeat;
+        background-position-x: left;
+        background-position-y: 70%;
+        padding-left: 0.5em;
+      }
+
+      a {
+        font-size: 12px;
+        color: $breadcrumb-color;
+      }
+    }
+  }
+}
