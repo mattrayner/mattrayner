@@ -42,14 +42,18 @@ unless Rails.env.test?
 
       FitBitStats.create(steps: steps, floors: floors) if should_update
 
-      Rails.logger.info should_update ? "Updated FitBit stats with:\n  Steps: #{steps}\n  Floors: #{floors}" : "Did not update FitBit stats..."
+      Rails.logger.info should_update ? "Updated FitBit stats with:\n  Steps: #{steps}\n  Floors: #{floors}" : 'Did not update FitBit stats...'
     else
       raise 'Missing oath token and secret. Please set these up and try again.'
     end
   end
 
   def new_stats?(previous_stats:, steps:, floors:)
-    if previous_stats.nil? || steps.nil? || floors.nil? || previous_stats.steps == steps || previous_stats.floors == floors
+    if previous_stats.nil?
+      return true
+    end
+
+    if steps.nil? || floors.nil? || previous_stats.steps == steps || previous_stats.floors == floors
       false
     else
       true
