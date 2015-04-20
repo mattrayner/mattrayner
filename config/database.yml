@@ -20,6 +20,6 @@ test:
 
 production:
   <<: *default
-  database: <%= ENV['DATABASE_NAME'] %>
-  username: <%= ENV['DATABASE_USER'] %>
-  password: <%= ENV['DATABASE_PW'] %>
+  database: mattrayner_production
+  username: root
+  password: 
