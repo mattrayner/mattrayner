@@ -11,10 +11,10 @@
   %h2 Current Stats:
   .col-xs-6.text-center
     %h3 Steps
-    .well.lead= @fit_bit_stats.steps || 0
+    .well.lead=  @fit_bit_stats.nil? ? 0 : @fit_bit_stats.steps
   .col-xs-6.text-center
     %h3 Floors
-    .well.lead= @fit_bit_stats.floors || 0
+    .well.lead= @fit_bit_stats.nil? ? 0 : @fit_bit_stats.floors
 
 .row
   %h2 History:

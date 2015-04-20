@@ -49,6 +49,5 @@ namespace :deploy do
 
 end
 
-before 'bundler:install', 'bundler:build'
 after 'deploy', 'deploy:migrate'
 after 'deploy:migrate', 'deploy:restart'
