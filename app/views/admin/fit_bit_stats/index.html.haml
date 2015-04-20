@@ -4,7 +4,7 @@
   %h1
     FitBit Stats
     %small
-      = distance_of_time_in_words_to_now(@fit_bit_stats.created_at) unless @fit_bit_stats.created_at.nil?
+      = distance_of_time_in_words_to_now(@fit_bit_stats.created_at) unless @fit_bit_stats.nil?
       ago.
 
 .row
