@@ -54,6 +54,26 @@ module ApplicationHelper
     return 'active' if home_controller?
   end
 
+  # What should the HTML class value be for the 'Case Studies' navigation
+  # element?
+  #
+  # @author Matthew Rayner
+  #
+  # @return [String] A string or nil
+  def case_studies_nav_class
+    return 'active' if case_studies_controller?
+  end
+
+  # What should the HTML class value be for the 'Skills' navigation
+  # element?
+  #
+  # @author Matthew Rayner
+  #
+  # @return [String] A string or nil
+  def skills_nav_class
+    return 'active' if skills_controller?
+  end
+
   private
 
   # Take an array of crumbs and create a tree of HTML
@@ -90,5 +110,23 @@ module ApplicationHelper
   # @return [Boolean] true or false
   def home_controller?
     params[:controller] == 'home'
+  end
+
+  # Are we currently within the case studies controller?
+  #
+  # @author Matthew Rayner
+  #
+  # @return [Boolean] true or false
+  def case_studies_controller?
+    params[:controller] == 'case_studies'
+  end
+
+  # Are we currently within the skills controller?
+  #
+  # @author Matthew Rayner
+  #
+  # @return [Boolean] true or false
+  def skills_controller?
+    params[:controller] == 'skills'
   end
 end

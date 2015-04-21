@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
+  before_filter :cv, :fitbit
+
   protected
 
   def layout_by_resource
@@ -22,5 +24,18 @@ class ApplicationController < ActionController::Base
 
   def not_found
     fail ActionController::RoutingError.new('Not Found'), 'Not Found'
+  end
+
+  def cv
+    @cv_url = cv_url
+  end
+
+  def cv_url
+    cv = CurriculumVitae.last
+    cv.file.url unless cv.nil?
+  end
+
+  def fitbit
+    @fitbit_stats = FitBitStats.last
   end
 end

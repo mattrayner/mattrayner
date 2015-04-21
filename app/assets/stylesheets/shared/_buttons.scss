@@ -1,0 +1,13 @@
+.btn-pill {
+  border-radius: 100px;
+}
+
+.btn-cta {
+  background-color: $btn-cta-bg;
+
+  @include standard-transition(background-color);
+
+  &:hover {
+    background-color: darken($btn-cta-bg, 7%);
+  }
+}

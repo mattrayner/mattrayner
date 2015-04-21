@@ -62,6 +62,9 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
+  resources :case_studies, only: [:index, :show ]
+  resources :skills, only: [:index, :show ]
+
   namespace :admin do
     get '/' => 'dashboard#index', as: 'dashboard_index'
 

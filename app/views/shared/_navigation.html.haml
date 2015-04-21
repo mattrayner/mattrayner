@@ -1,4 +1,4 @@
-%nav.navbar.navbar-inverse.navbar-translucent.navbar-fixed-top
+%nav.navbar.navbar-inverse.navbar-translucent.navbar-fixed-top.sticky
   .container
     .navbar-header
       %button.navbar-toggle.collapsed{ type: 'button', data: { toggle: 'collapse', target: '#main-site-navbar' } }
@@ -13,6 +13,18 @@
           %a{ href: root_url }
             Home
             - unless home_nav_class.nil?
+              %span.sr-only
+                (current)
+        %li{ class: case_studies_nav_class }
+          %a{ href: case_studies_url }
+            Case Studies
+            - unless case_studies_nav_class.nil?
+              %span.sr-only
+                (current)
+        %li{ class: skills_nav_class }
+          %a{ href: skills_url }
+            Skills
+            - unless skills_nav_class.nil?
               %span.sr-only
                 (current)
       - unless @cv_url.nil?

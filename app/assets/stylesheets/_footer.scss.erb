@@ -1,0 +1,128 @@
+footer.footer {
+  min-height: 12em;
+  background-color: $breadcrumb-bg;
+
+  color: $breadcrumb-color;
+
+  margin-top: 4em;
+
+  padding: 1.5em 0;
+
+  a.mattrayner-gem-logo {
+    background-image:    url(<%= asset_path('mattrayner-gem-logo.png') %>);
+    background-image:    url(<%= asset_path('mattrayner-gem-logo.svg') %>), none;
+    background-repeat:   no-repeat;
+    background-position: 50% 50%;
+
+    width: 100px;
+    height: 150px;
+  }
+
+  span.footer-stairs-logo, span.footer-steps-logo {
+    display: inline-block;
+
+    width: 41px;
+    height: 42px;
+
+    margin-bottom: -10px;
+
+    background-repeat:   no-repeat;
+    background-position: 50% 50%;
+  }
+
+  span.footer-steps-logo {
+    background-image:    url(<%= asset_path('footer-steps.png') %>);
+    background-image:    url(<%= asset_path('footer-steps.svg') %>), none;
+  }
+
+  span.footer-stairs-logo {
+    background-image:    url(<%= asset_path('footer-stairs.png') %>);
+    background-image:    url(<%= asset_path('footer-stairs.svg') %>), none;
+  }
+
+  span.footer-steps-content, span.footer-stairs-content {
+    display: inline-block;
+
+    height: 42px;
+
+    font-size: 30px;
+    line-height: 1;
+  }
+
+  span.footer-steps-content {
+    margin-bottom: 5px;
+  }
+
+  span.footer-updated {
+    display: inline-block;
+
+    margin-top: .2em;
+
+    color: darken($breadcrumb-color, 20%);
+  }
+
+  h5 {
+    font-size: 25px;
+    line-height: 1;
+    margin: 0 0 .1em;
+  }
+
+
+  p {
+    margin: 0;
+
+    &.copyright {
+      margin-top: 1em;
+    }
+  }
+
+  a.social {
+    float: left;
+
+    width: 40px;
+    height: 40px;
+
+    margin: .4em .3em 0 0;
+
+    background-repeat:   no-repeat;
+    background-position: 50% 50%;
+
+    opacity: 0.75;
+
+    @include standard-transition(opacity);
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.facebook {
+      background-image:    url(<%= asset_path('footer-facebook.png') %>);
+      background-image:    url(<%= asset_path('footer-facebook.svg') %>), none;
+    }
+
+    &.twitter {
+      background-image:    url(<%= asset_path('footer-twitter.png') %>);
+      background-image:    url(<%= asset_path('footer-twitter.svg') %>), none;
+    }
+
+    &.linkedin {
+      background-image:    url(<%= asset_path('footer-linkedin.png') %>);
+      background-image:    url(<%= asset_path('footer-linkedin.svg') %>), none;
+    }
+
+    &.github {
+      background-image:    url(<%= asset_path('footer-github.png') %>);
+      background-image:    url(<%= asset_path('footer-github.svg') %>), none;
+    }
+  }
+}
+
+@media(max-width: 768px){
+  footer.footer .col-sm-6 {
+    margin-bottom: 10px;
+  }
+}

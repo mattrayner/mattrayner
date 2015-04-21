@@ -40,6 +40,20 @@
   background-position: 50% 50%;
 }
 
+body.home {
+  p.lead {
+    font-size: 25px;
+  }
+
+  &> .container {
+    margin-bottom: 35px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 @media(max-width: 560px){
   .full-bleed-image {
     &.home {

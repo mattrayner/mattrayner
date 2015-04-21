@@ -17,6 +17,14 @@ describe 'shared/_navigation.html.haml' do
     expect(rendered).to match(/Home/)
   end
 
+  it 'renders the Case Studies link' do
+    expect(rendered).to match(/Case Studies/)
+  end
+
+  it 'renders the Skills link' do
+    expect(rendered).to match(/Skills/)
+  end
+
   it 'renders the My CV link' do
     expect(rendered).to match(/Get My CV/)
   end
