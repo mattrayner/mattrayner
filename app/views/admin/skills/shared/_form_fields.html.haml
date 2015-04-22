@@ -1,7 +1,16 @@
 .row
   .col-md-8
     = form.input :title, autofocus: true, placeholder: 'Ruby', class: 'form-control'
-    = form.input :level, autofocus: true, placeholder: '50.0', class: 'form-control'
+    .well
+      %h5 Logos (150x150px)
+      .col-sm-6
+        = image_tag @skill.svg_logo.url if @skill.svg_logo?
+        = form.input :svg_logo, input_html: { accept: '.svg' }
+      .col-sm-6
+        = image_tag @skill.image_logo.standard.url if @skill.image_logo?
+        = form.input :image_logo, input_html: { accept: '.jpg,.jpeg,.gif,.png' }
+      .clearfix
+    = form.input :level, placeholder: '50.0', class: 'form-control'
     = form.association :case_studies
 .row
   .col-xs-6.text-left

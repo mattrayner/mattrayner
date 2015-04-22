@@ -55,3 +55,4 @@ en:
     steps_floors_validation: 'Both floors and steps must be present.'
   skill:
     title_validation: 'Title is required.'
+    logo_validation: 'Both SVG and PNG logos are required.'

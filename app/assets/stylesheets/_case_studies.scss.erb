@@ -1,0 +1,108 @@
+.full-bleed-image {
+  &.case-studies {
+    background-image: url(<%= asset_path 'case-studies-header-1920.png' %>);
+
+    .case-studies-content {
+      display: inline-block;
+
+      width: 498px;
+      height: 74px;
+
+      margin-top: 9em;
+
+      background-image: url(<%= asset_path('case-studies-header-content.png') %>);
+      background-image: url(<%= asset_path('case-studies-header-content.svg') %>), none;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+    }
+  }
+
+  &.listing {
+    height: 12em;
+
+    background-position: center center;
+  }
+}
+
+.container.listing-container {
+  margin-top: 20px;
+
+  .skills {
+    .skill-circle {
+      display: inline-block;
+
+      width: 20px;
+      height: 20px;
+
+      background-size: 100%;
+      background-position: 50% 50%;
+
+      border: 1px solid lighten($breadcrumb-color, 25%);
+    }
+  }
+}
+
+body.case_studies {
+  & > .container {
+    margin-bottom: 70px;
+
+    &.divider-container {
+      margin-bottom: 35px;
+    }
+  }
+}
+
+@media(max-width: 560px){
+  .full-bleed-image {
+    &.case-studies {
+      .case-studies-content {
+        width: 94%;
+        background-size: 100%;
+      }
+    }
+  }
+}
+
+@media(max-width: 768px) {
+  .container.listing-container {
+    .skills {
+      .skill-circle {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}
+
+<% image_name = 'case-studies' %>
+@media(max-width: 1075px){
+  .full-bleed-image {
+    &.<%= image_name %> {
+    background-image: url(<%= asset_path "#{image_name}-header-1075.png" %>);
+  }
+  }
+}
+
+@media(min-width: 1920px){
+  .full-bleed-image {
+    &.<%= image_name %> {
+    background-image: url(<%= asset_path "#{image_name}-header-2200.png" %>);
+  }
+  }
+}
+
+@media(min-width: 2200px){
+  .full-bleed-image {
+    &.<%= image_name %> {
+    background-image: url(<%= asset_path "#{image_name}-header-3200.png" %>);
+  }
+  }
+}
+
+@media(min-width: 3200px){
+  .full-bleed-image {
+    &.<%= image_name %> {
+    background-image: url(<%= asset_path "#{image_name}-header-3840.png" %>);
+  }
+  }
+}

@@ -1,14 +1,26 @@
+body {
+  ::selection {
+    background: lighten($pink-color, 50%);
+  }
+  ::-moz-selection {
+    background: lighten($pink-color, 50%);
+  }
+}
+
 .full-bleed-image {
-  &.home {
+  background-size: cover;
+
+  background-position-x: center;
+  background-position-y: bottom;
+
+  text-align: center;
+
+  &.header {
     height: 24em;
+  }
 
+  &.home {
     background-image: url(<%= asset_path 'home-header-1920.png' %>);
-    background-size: cover;
-
-    background-position-x: center;
-    background-position-y: bottom;
-
-    text-align: center;
 
     .home-content {
       display: inline-block;
@@ -24,9 +36,13 @@
       background-position: 50% 50%;
     }
   }
+
+  &.bleed-glow {
+    @include box-shadow(inset 0 0 30px 0 rgba(28,0,0,0.2))
+  }
 }
 
-.home-divider{
+.header-divider{
   display: inline-block;
 
   width: 86px;
@@ -41,10 +57,6 @@
 }
 
 body.home {
-  p.lead {
-    font-size: 25px;
-  }
-
   &> .container {
     margin-bottom: 35px;
 
@@ -52,6 +64,10 @@ body.home {
       margin-bottom: 0;
     }
   }
+}
+
+p.lead {
+  font-size: 25px;
 }
 
 @media(max-width: 560px){
@@ -67,34 +83,35 @@ body.home {
   }
 }
 
+<% image_name = 'home' %>
 @media(max-width: 1075px){
   .full-bleed-image {
-    &.home {
-      background-image: url(<%= asset_path 'home-header-1075.png' %>);
+    &.<%= image_name %> {
+      background-image: url(<%= asset_path "#{image_name}-header-1075.png" %>);
     }
   }
 }
 
 @media(min-width: 1920px){
   .full-bleed-image {
-    &.home {
-      background-image: url(<%= asset_path 'home-header-2200.png' %>);
+    &.<%= image_name %> {
+      background-image: url(<%= asset_path "#{image_name}-header-2200.png" %>);
     }
   }
 }
 
 @media(min-width: 2200px){
   .full-bleed-image {
-    &.home {
-      background-image: url(<%= asset_path 'home-header-3200.png' %>);
+    &.<%= image_name %> {
+      background-image: url(<%= asset_path "#{image_name}-header-3200.png" %>);
     }
   }
 }
 
 @media(min-width: 3200px){
   .full-bleed-image {
-    &.home {
-      background-image: url(<%= asset_path 'home-header-3840.png' %>);
+    &.<%= image_name %> {
+      background-image: url(<%= asset_path "#{image_name}-header-3840.png" %>);
     }
   }
 }

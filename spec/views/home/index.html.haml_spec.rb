@@ -20,8 +20,8 @@ describe 'home/index.html.haml' do
       expect(rendered).to match(/\n<p class='lead'>Full stack Rubyist in Londo/)
     end
 
-    it 'had a divider' do
-      expect(rendered).to match(/class='home-divider'/)
+    it 'has a divider' do
+      expect(rendered).to match(/class='header-divider'/)
     end
   end
 

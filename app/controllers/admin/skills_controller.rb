@@ -47,7 +47,6 @@ module Admin
     def destroy
       @skill = Skill.find_by id: params[:id]
       not_found if @skill.nil?
-
       @skill.destroy
 
       if @skill.frozen?
@@ -60,7 +59,11 @@ module Admin
     private
 
     def skill_params
-      params.require(:skill).permit(:title, :level, case_study_ids: [])
+      params.require(:skill).permit(:title,
+                                    :svg_logo,
+                                    :image_logo,
+                                    :level,
+                                    case_study_ids: [])
     end
   end
 end

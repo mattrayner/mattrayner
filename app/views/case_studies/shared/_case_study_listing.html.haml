@@ -1,0 +1,9 @@
+.full-bleed-image.data-image.bleed-glow.listing{ id: "case-study-#{case_study.id}", data: { large_image: case_study.header_image.retina_banner.url, image: case_study.header_image.banner.url } }
+.container.container-small.text-center.listing-container
+  %h2= case_study.title
+  = markdown(case_study.intro) if case_study.intro.present?
+  - if case_study.skills
+    .skills
+      - case_study.skills.each do |skill|
+        = link_to skill.title, skill_url(skill), class: 'ir img-circle skill-circle data-svg-image content-tooltip', data: { svg_image: skill.svg_logo.url, image: skill.image_logo.url, toggle: 'tooltip', placement: 'top' }
+  = link_to 'See More <span class="glyphicon glyphicon-chevron-right"></span>'.html_safe, case_study_url(case_study), class: 'btn btn-lg btn-primary btn-pill btn-cta'

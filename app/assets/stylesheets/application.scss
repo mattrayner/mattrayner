@@ -5,7 +5,7 @@
 @import "shared/variables";
 @import "bootstrap/variables";
 @import "bootstrap";
-@import "shared/fonts";
+@import "shared/typography";
 @import "shared/mixins";
 @import "shared/buttons";
 
@@ -16,6 +16,9 @@
 
 // Home Imports
 @import "home";
+
+// Case Study Imports
+@import "case_studies";
 
 // Helper Classes
 @import "shared/helpers";

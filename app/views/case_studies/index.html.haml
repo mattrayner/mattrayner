@@ -1,7 +1,18 @@
 - content_for(:title, 'Case Studies : Matt Rayner : Full Stack Rubyist in London')
 - content_for(:breadcrumbs, build_breadcrumbs({title: 'Case Studies', url: case_studies_url}))
 
-.full-bleed-image.case-studies
+.full-bleed-image.header.case-studies
   .container
     .case-studies-content
-      %h1 Case Studies
+      %span.sr-only
+        %h1 Case Studies
+
+.container.container-small.text-center.divider-container
+  .header-divider
+
+.container.container-small.text-center
+  %h3.text-open-sans I design and develop beautiful things for print, online and the web
+  %p.lead I make an amazing cup of tea too
+
+- @case_studies.each do |case_study|
+  = render 'case_studies/shared/case_study_listing', case_study: case_study

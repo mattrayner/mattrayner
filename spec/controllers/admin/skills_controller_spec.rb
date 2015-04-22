@@ -38,11 +38,21 @@ RSpec.describe Admin::SkillsController, type: :controller do
     describe '#create' do
       let(:title) { 'Ruby' }
       let(:level) { 95.97 }
+      let(:svg_uploader) do
+        file = File.open('spec/support/files/ruby_logo.svg')
+        Rack::Test::UploadedFile.new(file)
+      end
+      let(:image_uploader) do
+        file = File.open('spec/support/files/ruby_logo.png')
+        Rack::Test::UploadedFile.new(file)
+      end
 
       let(:params) do
         {
           title: title,
-          level: level
+          level: level,
+          svg_logo: svg_uploader,
+          image_logo: image_uploader
         }
       end
 

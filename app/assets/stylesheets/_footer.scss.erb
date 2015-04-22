@@ -8,14 +8,18 @@ footer.footer {
 
   padding: 1.5em 0;
 
-  a.mattrayner-gem-logo {
-    background-image:    url(<%= asset_path('mattrayner-gem-logo.png') %>);
-    background-image:    url(<%= asset_path('mattrayner-gem-logo.svg') %>), none;
-    background-repeat:   no-repeat;
-    background-position: 50% 50%;
+  a {
+    color: $white;
 
-    width: 100px;
-    height: 150px;
+    &.mattrayner-gem-logo {
+      background-image:    url(<%= asset_path('mattrayner-gem-logo.png') %>);
+      background-image:    url(<%= asset_path('mattrayner-gem-logo.svg') %>), none;
+      background-repeat:   no-repeat;
+      background-position: 50% 50%;
+
+      width: 100px;
+      height: 150px;
+    }
   }
 
   span.footer-stairs-logo, span.footer-steps-logo {

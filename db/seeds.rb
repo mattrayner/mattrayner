@@ -26,6 +26,15 @@ def create_skill(title:, level:)
 
   skill.title = title
   skill.level = level
+
+  File.open('spec/support/files/ruby_logo.svg') do |f|
+    skill.svg_logo = f
+  end
+
+  File.open('spec/support/files/ruby_logo.png') do |f|
+    skill.image_logo = f
+  end
+
   skill.save!
 
   skill

@@ -14,8 +14,9 @@ Navigation.update_position = ->
   else
     $('nav.navbar-fixed-top').removeClass('sticky')
 
-jQuery ->
+$(document).ready ( ->
   $(window).scroll ->
     Navigation.update_position()
 
   Navigation.update_position()
+)

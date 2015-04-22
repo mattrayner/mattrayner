@@ -1,0 +1,32 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400);
+@import url(http://fonts.googleapis.com/css?family=Patua+One);
+
+html, body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-shadow: rgba(0,0,0,.01) 0 0 1px;
+}
+
+h1, h2 {
+  font-family: 'Patua One', cursive;
+}
+
+h1, h2, h3 {
+  margin-top: 5px;
+  line-height: 1;
+  color: $pink-color;
+}
+
+h1 {
+
+}
+
+h2 {
+  font-size: 50px;
+}
+
+h3 {
+  font-size: 35px;
+}
