@@ -53,10 +53,18 @@ unless Rails.env.test?
       return true
     end
 
-    if steps.nil? || floors.nil? || previous_stats.steps == steps || previous_stats.floors == floors
+    if new_data_nil?(steps, floors) || same_as_previous?(previous_stats, steps, floors) || steps == 0
       false
     else
       true
     end
+  end
+
+  def new_data_nil?(steps, floors)
+    steps.nil? || floors.nil?
+  end
+
+  def same_as_previous?(previous_stats, steps, floors)
+    previous_stats.steps == steps || previous_stats.floors == floors
   end
 end

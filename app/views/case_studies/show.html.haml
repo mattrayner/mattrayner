@@ -1,0 +1,26 @@
+- content_for(:title, "#{@case_study.title} : Case Studies : Matt Rayner : Full Stack Rubyist in London")
+- content_for(:breadcrumbs, build_breadcrumbs([{title: 'Case Studies', url: case_studies_url}, {title: @case_study.title, url: case_study_url(@case_study)}]))
+
+.full-bleed-image.header.case-studies.data-image.bleed-glow{ data: { large_image: @case_study.header_image.retina_banner.url, image: @case_study.header_image.banner.url} }
+  .container
+    .case-study-content
+      %h1= @case_study.title
+
+.container.container-small.text-center
+  =markdown(@case_study.intro)
+
+.container.container-small.text-center
+  =markdown(@case_study.body)
+
+- if @case_study.gallery_images.present?
+  .container.container-small.text-center
+    %h2 Gallery
+    - @case_study.gallery_images.each do |image|
+      = image_tag image.image.blurred_background.url
+      = image_tag image.image.thumb.url, width: 150
+
+- if @case_study.skills.present?
+  .container.container-small.text-center
+    %h2 Skills
+    - @case_study.skills.each do |skill|
+      = skill.title
