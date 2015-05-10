@@ -5,7 +5,7 @@ if Rails.env.production?
   raise 'Seed Error: You are not allowed to seed on production'
 end
 
-def create_user(email:, password:)
+def create_user(email: email, password: password)
   puts "\t\t- #{email}"
 
   user = User.find_or_initialize_by(email: email)
@@ -17,7 +17,7 @@ def create_user(email:, password:)
   user.save!
 end
 
-def create_skill(title:, level:)
+def create_skill(title: title, level: level)
   puts "\t\t- #{title}"
 
   skill = Skill.find_or_initialize_by(title: title)
@@ -40,7 +40,7 @@ def create_skill(title:, level:)
   skill
 end
 
-def create_case_study(title:, intro:, body:, attachments: 0, skills: [])
+def create_case_study(title: title, intro: intro, body: body, attachments: 0, skills: [])
   puts "\t\t- #{title}"
 
   case_study = CaseStudy.find_or_initialize_by(title: title)
@@ -75,7 +75,7 @@ def create_case_study(title:, intro:, body:, attachments: 0, skills: [])
   end
 end
 
-def create_fit_bit_stat(steps:, floors:, age:)
+def create_fit_bit_stat(steps: steps, floors: floors, age: age)
   unless FitBitStats.find_by(steps: steps, floors: floors, created_at: age)
     puts "\t\t\t- Creating (steps: #{steps}, floors: #{floors})..."
 

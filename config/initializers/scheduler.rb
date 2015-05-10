@@ -18,7 +18,7 @@ unless Rails.env.test?
     if config[:oauth][:token] && config[:oauth][:secret]
       begin
         client.reconnect(config[:oauth][:token], config[:oauth][:secret])
-      rescue Exception => e
+      rescue
         raise 'Could not reconnect Fitgem::Client due to invalid keys in .fitgem.yml'
       end
 
@@ -48,12 +48,16 @@ unless Rails.env.test?
     end
   end
 
-  def new_stats?(previous_stats:, steps:, floors:)
+  def new_stats?(previous_stats: previous_stats, steps: steps, floors: floors)
     if previous_stats.nil?
       return true
     end
 
-    if new_data_nil?(steps, floors) || same_as_previous?(previous_stats, steps, floors) || steps == 0
+    nil_check = steps.nil? || floors.nil?
+    equality_check = previous_stats.steps == steps || previous_stats.floors == floors
+    zero_step_check = steps.zero?
+
+    if nil_check || equality_check || zero_step_check
       false
     else
       true
